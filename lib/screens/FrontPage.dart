@@ -23,7 +23,7 @@ class _FrontScreenState extends State<FrontScreen> {
           children: [
             AppBar(
               title:Center(child: Text('JIIT HUB!')),
-              backgroundColor: Colors.brown,
+              backgroundColor: Colors.blueGrey[800],
             ),
             Padding(
               padding: const EdgeInsets.only(top:20),
@@ -32,13 +32,13 @@ class _FrontScreenState extends State<FrontScreen> {
               ),
             ),
             SizedBox(
-              height: Responsive.height(5, context),
+              height: Responsive.height(1, context),
             ),
             Container(
               child: Text('Login!',style: K.style1,textAlign: TextAlign.center),
             ),
             SizedBox(
-              height: Responsive.height(5, context),
+              height: Responsive.height(2, context),
             ),
             Row(
                 children:[
@@ -84,6 +84,34 @@ class _FrontScreenState extends State<FrontScreen> {
                   ),
                 ]
             ),
+            SizedBox(
+              height: Responsive.height(5, context),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: Responsive.width(50, context),
+                  height: 50,
+                  child: RaisedButton(
+                    textColor: Colors.white,
+                    color: Colors.blueGrey[800],
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 20,),
+                    ),
+                    onPressed: () {
+                      print(EnrollmentController.text);
+                      print(PasswordController.text);
+                    },
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: Responsive.height(2, context),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -93,7 +121,10 @@ class _FrontScreenState extends State<FrontScreen> {
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15.0,right: 50),
-                    child: Text('Not registered?'),
+                    child: Text(
+                        'Not registered?',
+                      style: TextStyle(fontSize: 20,color:Colors.blueGrey[800]),
+                    ),
                   ),
                 ),
 
