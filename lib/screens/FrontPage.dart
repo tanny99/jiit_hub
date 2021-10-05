@@ -73,8 +73,9 @@ class _FrontScreenState extends State<FrontScreen> {
                     width: Responsive.width(80, context),
                     child: TextField(
                       decoration: InputDecoration(
-                          hintText: "Password"
+                          hintText: "Password",
                       ),
+                      obscureText: true,
                       keyboardType: TextInputType.text,
                       textAlign: TextAlign.left,
                       controller: PasswordController,
