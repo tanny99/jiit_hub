@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jiit_hub/screens/SignupPage.dart';
+import 'Constants.dart' as K;
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:jiit_hub/responsive_constants.dart';
 
@@ -30,7 +32,13 @@ class _FrontScreenState extends State<FrontScreen> {
               ),
             ),
             SizedBox(
-              height: Responsive.height(10, context),
+              height: Responsive.height(5, context),
+            ),
+            Container(
+              child: Text('Login!',style: K.style1,textAlign: TextAlign.center),
+            ),
+            SizedBox(
+              height: Responsive.height(5, context),
             ),
             Row(
                 children:[
@@ -75,6 +83,21 @@ class _FrontScreenState extends State<FrontScreen> {
                   ),
                 ]
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 15.0,right: 50),
+                    child: Text('Not registered?'),
+                  ),
+                ),
+
+              ],
+            )
 
 
 
