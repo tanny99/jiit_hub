@@ -8,12 +8,12 @@ import 'package:jiit_hub/responsive_constants.dart';
 TextEditingController EnrollmentController=TextEditingController();
 TextEditingController PasswordController=TextEditingController();
 
-class FrontScreen extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _FrontScreenState createState() => _FrontScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _FrontScreenState extends State<FrontScreen> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class _FrontScreenState extends State<FrontScreen> {
             Padding(
               padding: const EdgeInsets.only(top:20),
               child: Container(
-                child: Image(image: AssetImage('Assets/jiit_logo.jpg'),),
+                child: Image(image: AssetImage('Assets/jiit_logo.jpg'),height: Responsive.height(30, context),),
               ),
             ),
             SizedBox(
@@ -94,9 +94,8 @@ class _FrontScreenState extends State<FrontScreen> {
                 Container(
                   width: Responsive.width(50, context),
                   height: 50,
-                  child: RaisedButton(
-                    textColor: Colors.white,
-                    color: Colors.blueGrey[800],
+                  child: ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blueGrey)),
                     child: Text(
                       'Login',
                       style: TextStyle(fontSize: 20,),

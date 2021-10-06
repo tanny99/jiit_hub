@@ -6,6 +6,7 @@ import 'package:jiit_hub/responsive_constants.dart';
 
 TextEditingController EnrollmentController=TextEditingController();
 TextEditingController PasswordController=TextEditingController();
+TextEditingController PasswordControllerCheck=TextEditingController();
 
 class SignupPage extends StatelessWidget {
   @override
@@ -25,7 +26,7 @@ class SignupPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top:20),
               child: Container(
-                child: Image(image: AssetImage('Assets/jiit_logo.jpg'),),
+                child: Image(image: AssetImage('Assets/jiit_logo.jpg'),height: Responsive.height(30, context),),
               ),
             ),
             SizedBox(
@@ -115,14 +116,12 @@ class SignupPage extends StatelessWidget {
 
                   width: Responsive.width(50, context),
                   height: 50,
-                  child: RaisedButton(
-                    textColor: Colors.white,
-                    color: Colors.blueGrey[800],
+                  child: ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blueGrey)),
                     child: Text(
-                        'Sign Up',
-                      style: TextStyle(fontSize: 20),
+                      'SignUp',
+                      style: TextStyle(fontSize: 20,),
                     ),
-
                     onPressed: () {
                       print(EnrollmentController.text);
                       print(PasswordController.text);
