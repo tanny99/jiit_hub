@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'HomePage.dart';
 import 'package:flutter/material.dart';
+import 'package:jiit_hub/screens/HomePage.dart';
 import 'package:jiit_hub/screens/SignupPage.dart';
 import 'Constants.dart' as K;
 import 'package:cupertino_icons/cupertino_icons.dart';
@@ -101,8 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 20,),
                     ),
                     onPressed: () {
-                      print(EnrollmentController.text);
-                      print(PasswordController.text);
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
                     },
                   ),
                 ),
