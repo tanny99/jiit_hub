@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'MyProfile.dart';
 import 'Constants.dart' as K;
+import 'NotificationPage.dart';
+import 'ExplorePage.dart';
+import 'MyProfile.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -42,10 +45,10 @@ class _HomePageState extends State<HomePage> {
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children:[Text('My Work', style: K.style2,),IconButton(onPressed: (){}, icon: Icon(Icons.menu))]),
                 ),
                 ListTile(leading: Icon(Icons.work),title: Text('Issues', style: K.style2),onTap:(){},),
-                ListTile(leading: Icon(Icons.work),title: Text('Pull Requests', style: K.style2),onTap:(){},),
-                ListTile(leading: Icon(Icons.work),title: Text('Discussions', style: K.style2),onTap:(){},),
-                ListTile(leading: Icon(Icons.work),title: Text('Repositories', style: K.style2),onTap:(){},),
-                ListTile(leading: Icon(Icons.work),title: Text('Organizations', style: K.style2),onTap:(){},),
+                ListTile(leading: Icon(Icons.swap_horizontal_circle_rounded),title: Text('Pull Requests', style: K.style2),onTap:(){},),
+                ListTile(leading: Icon(Icons.message),title: Text('Discussions', style: K.style2),onTap:(){},),
+                ListTile(leading: Icon(Icons.book_outlined),title: Text('Repositories', style: K.style2),onTap:(){},),
+                ListTile(leading: Icon(Icons.circle),title: Text('Organizations', style: K.style2),onTap:(){},),
               ],
             ),
           ),
@@ -55,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home_outlined),label: 'Home',),
             BottomNavigationBarItem(icon: Icon(Icons.notifications_none),label: 'Notification'),
-            BottomNavigationBarItem(icon: Icon(Icons.search_outlined),label: 'Explore'),
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.globe),label: 'Explore'),
             BottomNavigationBarItem(icon: Icon(Icons.person),label: 'Profile'),
           ],
           currentIndex: selectedIndex,
