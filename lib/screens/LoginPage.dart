@@ -6,6 +6,7 @@ import 'package:jiit_hub/screens/SignupPage.dart';
 import 'Constants.dart' as K;
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:jiit_hub/responsive_constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 TextEditingController EnrollmentController=TextEditingController();
 TextEditingController PasswordController=TextEditingController();
@@ -16,6 +17,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  String? _enrollmentNo="";
+  String? _password="";
+
+  checkAuthentification() async{
+    _auth.onAuthStateChanged.listen((user){
+      if(user != null)
+        {
+          Navigator.push(context, MaterialPageRoute(builder: context)=>HomePage());
+        }
+    });
+  }
+
+  @override
+  void initState()
+  {
+    super.initState();
+    this.checkAuthentification();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
