@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jiit_hub/screens/MyProfile.dart';
 import 'HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:jiit_hub/screens/HomePage.dart';
@@ -21,14 +22,14 @@ class _LoginPageState extends State<LoginPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  String? _enrollmentNo="";
-  String? _password="";
+  String? _enrollmentNo;
+  String? _password;
 
-  checkAuthentification() async{
-    _auth.onAuthStateChanged.listen((user){
+  checkAuthentication() async{
+    _auth.authStateChanges().listen((user){
       if(user != null)
         {
-          Navigator.push(context, MaterialPageRoute(builder: context)=>HomePage());
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProfile()));
         }
     });
   }
@@ -37,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState()
   {
     super.initState();
-    this.checkAuthentification();
+    this.checkAuthentication();
   }
 
   @override
