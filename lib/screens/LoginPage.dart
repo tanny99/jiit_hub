@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     _auth.authStateChanges().listen((user){
       if(user != null)
         {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProfile()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
         }
     });
   }
@@ -46,120 +46,131 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AppBar(
-              title:Center(child: Text('JIIT HUB!')),
-              backgroundColor: Colors.blueGrey[800],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top:20),
-              child: Container(
-                child: Image(image: AssetImage('Assets/jiit_logo.jpg'),height: Responsive.height(30, context),),
-              ),
-            ),
-            SizedBox(
-              height: Responsive.height(1, context),
-            ),
-            Container(
-              child: Text('Login!',style: K.style1,textAlign: TextAlign.center),
-            ),
-            SizedBox(
-              height: Responsive.height(2, context),
-            ),
-            Row(
-                children:[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(CupertinoIcons.person),
+        child: Container(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                AppBar(
+                  title:Center(child: Text('JIIT HUB!')),
+                  backgroundColor: Colors.blueGrey[800],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top:20),
+                  child: Container(
+                    child: Image(image: AssetImage('Assets/jiit_logo.jpg'),height: Responsive.height(30, context),),
                   ),
-                  Container(
-                    width: Responsive.width(80, context),
-                    child: TextField(
-                      decoration: InputDecoration(
-
-                          hintText: "Enrollment Number"
-                      ),
-                      keyboardType: TextInputType.phone,
-                      textAlign: TextAlign.left,
-                      controller: EnrollmentController,
-
-                    ),
-                  ),]
-            ),
-            SizedBox(
-              height: Responsive.height(2, context),
-            ),
-            Row(
-                children:[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(CupertinoIcons.lock_fill),
-                  ),
-                  Container(
-                    width: Responsive.width(80, context),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: "Password",
-                      ),
-                      obscureText: true,
-                      keyboardType: TextInputType.text,
-                      textAlign: TextAlign.left,
-                      controller: PasswordController,
-
-                    ),
-                  ),
-                ]
-            ),
-            SizedBox(
-              height: Responsive.height(5, context),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+                ),
+                SizedBox(
+                  height: Responsive.height(1, context),
+                ),
                 Container(
-                  width: Responsive.width(50, context),
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blueGrey)),
-                    child: Text(
-                      'Login',
-                      style: TextStyle(fontSize: 20,),
-                    ),
-                    onPressed: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-                    },
-                  ),
+                  child: Text('Login!',style: K.style1,textAlign: TextAlign.center),
                 ),
+                SizedBox(
+                  height: Responsive.height(2, context),
+                ),
+                Row(
+                    children:[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(CupertinoIcons.person),
+                      ),
+                      Container(
+                        width: Responsive.width(80, context),
+                        child: TextFormField(
+                          validator: (value)
+                            {
+                              if(value == null) {
+                                return 'Enter Enrollment Number';
+                              }
+                              decoration: InputDecoration(
+                                  hintText: "Enrollment Number"
+                              );
+                              onSaved: (value) => _enrollmentNo = value;
+                              keyboardType: TextInputType.phone;
+                              textAlign: TextAlign.left;
+                              controller: EnrollmentController;
+                            }
+                        ),
+                      ),
+                    ]
+                ),
+                SizedBox(
+                  height: Responsive.height(2, context),
+                ),
+                Row(
+                    children:[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(CupertinoIcons.lock_fill),
+                      ),
+                      Container(
+                        width: Responsive.width(80, context),
+                        child: TextFormField(
+                          validator: (value)
+                            {
+                              if(value == null)
+                                return 'Enter Password';
+                              decoration: InputDecoration(
+                                hintText: "Password",
+                              );
+                              onSaved: (value) => _password = value;
+                              obscureText: true;
+                              keyboardType: TextInputType.text;
+                              textAlign: TextAlign.left;
+                              controller: PasswordController;
+                            }
+                        ),
+                      ),
+                    ]
+                ),
+                SizedBox(
+                  height: Responsive.height(5, context),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: Responsive.width(50, context),
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blueGrey)),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(fontSize: 20,),
+                        ),
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: Responsive.height(2, context),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 15.0,right: 50),
+                        child: Text(
+                          'Not registered?',
+                          style: TextStyle(fontSize: 20,color:Colors.blueGrey[800]),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
-            SizedBox(
-              height: Responsive.height(2, context),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15.0,right: 50),
-                    child: Text(
-                        'Not registered?',
-                      style: TextStyle(fontSize: 20,color:Colors.blueGrey[800]),
-                    ),
-                  ),
-                ),
-
-              ],
-            )
-
-
-
-          ],
-
+          ),
         ),
       ),
     );
