@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'MyProfile.dart';
 import 'Constants.dart' as K;
-import 'NotificationPage.dart';
-import 'ExplorePage.dart';
-import 'MyProfile.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();

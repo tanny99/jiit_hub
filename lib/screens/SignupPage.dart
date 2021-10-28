@@ -1,12 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:jiit_hub/screens/LoginPage.dart';
+import 'package:toast/toast.dart' ;
 import 'Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
 import 'package:jiit_hub/responsive_constants.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+var data;
 
 TextEditingController EnrollmentController=TextEditingController();
 TextEditingController PasswordController=TextEditingController();
 TextEditingController PasswordControllerCheck=TextEditingController();
+Future<int> SignupUser(String enrollment, String password) async {
+  final Uri url1 =
+  Uri.parse('https://jiithub-4f546-default-rtdb.firebaseio.com/Students/.json');
+  final response = await http.get(
+    url1,
+  );
+  data = response.body;
+  print(data);
+  // print('##'+jsonDecode(data)[enrollment]);
+
+print(jsonDecode(data)[enrollment]);
+print(password);
+  if (jsonDecode(data)[enrollment] == password) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
 
 class SignupPage extends StatelessWidget {
   @override
@@ -122,7 +145,18 @@ class SignupPage extends StatelessWidget {
                       'SignUp',
                       style: TextStyle(fontSize: 20,),
                     ),
-                    onPressed: () {
+                    onPressed: ()async {
+                      int i=await SignupUser(EnrollmentController.text, PasswordController.text);
+                      if(i==1){
+                        Toast.show("Login Successfully! Welcome!!", context,
+                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+                      }
+                      else{
+                        Toast.show("Not an Authorized Member!", context,
+                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      }
+                      print(await SignupUser(EnrollmentController.text, PasswordController.text));
                       print(EnrollmentController.text);
                       print(PasswordController.text);
                     },
