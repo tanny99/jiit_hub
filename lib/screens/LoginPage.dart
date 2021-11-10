@@ -5,10 +5,33 @@ import 'package:jiit_hub/screens/HomePage.dart';
 import 'package:jiit_hub/screens/SignupPage.dart';
 import 'Constants.dart' as K;
 import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:http/http.dart' as http;
 import 'package:jiit_hub/responsive_constants.dart';
+import 'package:toast/toast.dart';
+import 'dart:convert';
+var data;
 
 TextEditingController EnrollmentController=TextEditingController();
 TextEditingController PasswordController=TextEditingController();
+
+Future<int> LoginUser(String enrollment, String password) async {
+  final Uri url1 =
+  Uri.parse('https://jiithub-4f546-default-rtdb.firebaseio.com/Students/.json');
+  final response = await http.get(
+    url1,
+  );
+  data = response.body;
+  print(data);
+  // print('##'+jsonDecode(data)[enrollment]);
+
+  print(jsonDecode(data)[enrollment]);
+  print(password);
+  if (jsonDecode(data)[enrollment] == password) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
 
 class LoginPage extends StatefulWidget {
   @override
@@ -102,8 +125,20 @@ class _LoginPageState extends State<LoginPage> {
                       'Login',
                       style: TextStyle(fontSize: 20,),
                     ),
-                    onPressed: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                    onPressed: ()async {
+                      int i=await LoginUser(EnrollmentController.text, PasswordController.text);
+                      if(i==1){
+                        Toast.show("Login Successfully! Welcome!!", context,
+                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                      }
+                      else{
+                        Toast.show("Not an Authorized Member!", context,
+                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      }
+                      print(await LoginUser(EnrollmentController.text, PasswordController.text));
+                      print(EnrollmentController.text);
+                      print(PasswordController.text);
                     },
                   ),
                 ),
@@ -117,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 TextButton(
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=> CreateAccount()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15.0,right: 50),
