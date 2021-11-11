@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "229665273375",
+    "project_id": "jiithub-4f546",
+    "storage_bucket": "jiithub-4f546.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229665273375:android:879c5c36206e4a6e7e872a",
+        "android_client_info": {
+          "package_name": "com.tanny.jiit_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229665273375-igr0ascf2uv9sjqut5vbeqebitqpfrv4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tanny.jiit_hub",
+            "certificate_hash": "34c27133a44f96e83e5ef670434f4b312abb0a3e"
+          }
+        },
+        {
+          "client_id": "229665273375-u3udtsf5m54k19fgjap16meqonic2d5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCy4nnlRdG9ruYwwO4Ls4_vYSW9PfXmpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229665273375-u3udtsf5m54k19fgjap16meqonic2d5i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
