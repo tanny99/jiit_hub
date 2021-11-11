@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 Future<User?> createAccount(String email, String enroll, String password) async{
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
 
   try{
     User? user = (await _auth.createUserWithEmailAndPassword(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:jiit_hub/screens/LoginPage.dart';
 import 'package:toast/toast.dart' ;
-import 'package:jiit_hub/screens/Methods.dart';
+// import 'package:jiit_hub/screens/Methods.dart';
 import 'Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
 import 'package:jiit_hub/responsive_constants.dart';
@@ -18,9 +18,9 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  TextEditingController EmailController=TextEditingController();
-  TextEditingController EnrollmentController=TextEditingController();
-  TextEditingController PasswordController=TextEditingController();
+  final TextEditingController EmailController=TextEditingController();
+  final TextEditingController EnrollmentController=TextEditingController();
+  final TextEditingController PasswordController=TextEditingController();
   bool isLoading = false;
 
   @override
@@ -29,10 +29,10 @@ class _CreateAccountState extends State<CreateAccount> {
       backgroundColor: Colors.white,
       body: isLoading
           ? Center(
-        child: Container(
-          child: CircularProgressIndicator(),
-        ),
-      )
+            child: Container(
+              child: CircularProgressIndicator(),
+            ),
+         )
           : SingleChildScrollView(
           child: Column(
             children: [
@@ -159,6 +159,8 @@ class _CreateAccountState extends State<CreateAccount> {
                                       print("Login Failed");
                                   }
                               });
+                        }else {
+                          print("Please enter fields.");
                         }
                     },
                   ),
@@ -171,6 +173,28 @@ class _CreateAccountState extends State<CreateAccount> {
     );
   }
 
+  Future<User?> createAccount(String email, String enroll, String password) async{
+
+    FirebaseAuth _auth = FirebaseAuth.instance;
+
+    try{
+      User? user = (await _auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password
+      )).user;
+
+      if(user != null){
+        print("Login Successful!");
+        return user;
+      } else{
+        print("Account creation failed");
+        return user;
+      }
+    }catch(e){
+      print(e);
+      return null;
+    }
+  }
   // final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   //
   // void registerNewUser(BuildContext context) async

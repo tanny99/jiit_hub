@@ -11,8 +11,7 @@ import 'package:toast/toast.dart';
 import 'dart:convert';
 var data;
 
-TextEditingController EnrollmentController=TextEditingController();
-TextEditingController PasswordController=TextEditingController();
+
 
 Future<int> LoginUser(String enrollment, String password) async {
   final Uri url1 =
@@ -39,6 +38,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController EnrollmentController=TextEditingController();
+  final TextEditingController PasswordController=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
