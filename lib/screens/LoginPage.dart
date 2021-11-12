@@ -9,28 +9,29 @@ import 'package:http/http.dart' as http;
 import 'package:jiit_hub/responsive_constants.dart';
 import 'package:toast/toast.dart';
 import 'dart:convert';
+import 'package:jiit_hub/screens/Methods.dart';
 var data;
 
 
 
-Future<int> LoginUser(String enrollment, String password) async {
-  final Uri url1 =
-  Uri.parse('https://jiithub-4f546-default-rtdb.firebaseio.com/Students/.json');
-  final response = await http.get(
-    url1,
-  );
-  data = response.body;
-  print(data);
-  // print('##'+jsonDecode(data)[enrollment]);
-
-  print(jsonDecode(data)[enrollment]);
-  print(password);
-  if (jsonDecode(data)[enrollment] == password) {
-    return 1;
-  } else {
-    return 0;
-  }
-}
+// Future<int> LoginUser(String enrollment, String password) async {
+//   final Uri url1 =
+//   Uri.parse('https://jiithub-4f546-default-rtdb.firebaseio.com/Students/.json');
+//   final response = await http.get(
+//     url1,
+//   );
+//   data = response.body;
+//   print(data);
+//   // print('##'+jsonDecode(data)[enrollment]);
+//
+//   print(jsonDecode(data)[enrollment]);
+//   print(password);
+//   if (jsonDecode(data)[enrollment] == password) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// }
 
 class LoginPage extends StatefulWidget {
   @override
@@ -40,12 +41,18 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController EnrollmentController=TextEditingController();
   final TextEditingController PasswordController=TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
+      body: isLoading? Center(
+        child: Container(
+          child: CircularProgressIndicator(),
+        ),
+      )
+          : SingleChildScrollView(
         child: Column(
           children: [
             AppBar(
@@ -128,19 +135,30 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 20,),
                     ),
                     onPressed: ()async {
-                      int i=await LoginUser(EnrollmentController.text, PasswordController.text);
-                      if(i==1){
-                        Toast.show("Login Successfully! Welcome!!", context,
-                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-                      }
-                      else{
-                        Toast.show("Not an Authorized Member!", context,
-                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                      }
-                      print(await LoginUser(EnrollmentController.text, PasswordController.text));
-                      print(EnrollmentController.text);
-                      print(PasswordController.text);
+                        if(EnrollmentController.text.isNotEmpty &&
+                          PasswordController.text.isNotEmpty) {
+                            setState(() {
+                              isLoading = true;
+                            });
+
+                            LogIn(EnrollmentController.text, PasswordController.text)
+                            .then((user) {
+                              if(user != null) {
+                                print("Login Successful");
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+                              } else{
+                                print("Login failed");
+                                setState(() {
+                                  isLoading = false;
+                                });
+                              }
+                            });
+                        } else{
+                          print("Please fill the form correctly");
+                        }
                     },
                   ),
                 ),
