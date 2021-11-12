@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:jiit_hub/screens/LoginPage.dart';
 import 'package:toast/toast.dart' ;
-import 'package:jiit_hub/screens/Methods.dart';
+// import 'package:jiit_hub/screens/Methods.dart';
 import 'Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
 import 'package:jiit_hub/responsive_constants.dart';
@@ -70,7 +70,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     decoration: InputDecoration(
                         hintText: "Email"
                     ),
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.text,
                     textAlign: TextAlign.left,
                     controller: EmailController,
                   ),
@@ -154,10 +154,9 @@ class _CreateAccountState extends State<CreateAccount> {
                                       setState(() {
                                         isLoading = false;
                                       });
-                                      Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
-                                      print("Account Created Successful");
+                                      print("Login Successful");
                                   } else {
-                                      print("Account Creation Failed");
+                                      print("Login Failed");
                                   }
                               });
                         }else {
@@ -173,4 +172,37 @@ class _CreateAccountState extends State<CreateAccount> {
       ),
     );
   }
+
+  Future<User?> createAccount(String email, String enroll, String password) async{
+
+    FirebaseAuth _auth = FirebaseAuth.instance;
+
+    try{
+      User? user = (await _auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password
+      )).user;
+
+      if(user != null){
+        print("Login Successful!");
+        return user;
+      } else{
+        print("Account creation failed");
+        return user;
+      }
+    }catch(e){
+      print(e);
+      return null;
+    }
+  }
+  // final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  //
+  // void registerNewUser(BuildContext context) async
+  // {
+  //   final User firebaseUser = (await _firebaseAuth
+  //       .createUserWithEmailAndPassword(
+  //       email: EnrollmentController.text,
+  //       password: PasswordController.text
+  //   )).;
+  // }
 }

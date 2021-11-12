@@ -9,9 +9,8 @@ import 'package:http/http.dart' as http;
 import 'package:jiit_hub/responsive_constants.dart';
 import 'package:toast/toast.dart';
 import 'dart:convert';
-import 'package:jiit_hub/screens/Methods.dart';
-var data;
-// tanny from aligarh
+// var data;
+
 
 
 // Future<int> LoginUser(String enrollment, String password) async {
@@ -41,18 +40,12 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController EnrollmentController=TextEditingController();
   final TextEditingController PasswordController=TextEditingController();
-  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: isLoading? Center(
-        child: Container(
-          child: CircularProgressIndicator(),
-        ),
-      )
-          : SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             AppBar(
@@ -135,30 +128,19 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 20,),
                     ),
                     onPressed: ()async {
-                        if(EnrollmentController.text.isNotEmpty &&
-                          PasswordController.text.isNotEmpty) {
-                            setState(() {
-                              isLoading = true;
-                            });
-
-                            LogIn(EnrollmentController.text, PasswordController.text)
-                            .then((user) {
-                              if(user != null) {
-                                print("Login Successful");
-                                setState(() {
-                                  isLoading = false;
-                                });
-                                Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
-                              } else{
-                                print("Login failed");
-                                setState(() {
-                                  isLoading = false;
-                                });
-                              }
-                            });
-                        } else{
-                          print("Please fill the form correctly");
-                        }
+                      // int i=await LoginUser(EnrollmentController.text, PasswordController.text);
+                      // if(i==1){
+                      //   Toast.show("Login Successfully! Welcome!!", context,
+                      //       duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      //   Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                      // }
+                      // else{
+                      //   Toast.show("Not an Authorized Member!", context,
+                      //       duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      // }
+                      // print(await LoginUser(EnrollmentController.text, PasswordController.text));
+                      // print(EnrollmentController.text);
+                      // print(PasswordController.text);
                     },
                   ),
                 ),

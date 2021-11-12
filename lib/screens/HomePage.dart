@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'MyProfile.dart';
 import 'Constants.dart' as K;
-import 'package:jiit_hub/screens/Methods.dart';
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -20,6 +18,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -46,10 +46,6 @@ class _HomePageState extends State<HomePage> {
                 ListTile(leading: Icon(Icons.message),title: Text('Discussions', style: K.style2),onTap:(){},),
                 ListTile(leading: Icon(Icons.book_outlined),title: Text('Repositories', style: K.style2),onTap:(){},),
                 ListTile(leading: Icon(Icons.circle),title: Text('Organizations', style: K.style2),onTap:(){},),
-                TextButton(
-                    onPressed: () => logOut(context),
-                    child: Text("LogOut"),
-                ),
               ],
             ),
           ),

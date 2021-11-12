@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jiit_hub/screens/LoginPage.dart';
 
 Future<User?> createAccount(String email, String enroll, String password) async{
 
@@ -25,38 +24,12 @@ Future<User?> createAccount(String email, String enroll, String password) async{
   }
 }
 
-Future<User?> LogIn(String enroll, String password) async {
+Future logOut() async {
 
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   try{
-    User? user = (await _auth.signInWithEmailAndPassword(
-        email: enroll,
-        password: password
-    )).user;
-
-    if(user != null) {
-      print("Login Successful");
-      return user;
-    }else {
-      print("Login Failed");
-      return user;
-    }
-  }catch(e){
-      print(e);
-      return null;
-  }
-}
-
-Future logOut(BuildContext context) async {
-
-  FirebaseAuth _auth = FirebaseAuth.instance;
-
-  try{
-    await _auth.signOut()
-    .then((user) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
-    });
+    await _auth.signOut();
   }catch(e) {
     print("error");
   }
