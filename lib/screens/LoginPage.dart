@@ -85,9 +85,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       decoration: InputDecoration(
 
-                          hintText: "Enrollment Number"
+                          hintText: "Email Address"
                       ),
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.text,
                       textAlign: TextAlign.left,
                       controller: EnrollmentController,
 
