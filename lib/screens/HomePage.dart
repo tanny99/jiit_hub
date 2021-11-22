@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'MyProfile.dart';
 import 'Constants.dart' as K;
+import 'HomeScreen.dart';
+import 'NotificationPage.dart';
 import 'package:jiit_hub/screens/Methods.dart';
-
+import 'ExplorePage.dart';
+import 'MyProfilePage.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -11,10 +14,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex=0;
+  int selectedPage = 0;
+  final _PageOptions=[
+    HomeScreen(),
+    NotificationPage(),
+    ExplorePage(),
+    MyProfile()
+  ];
 
   void _onTap(int index){
     setState((){
       selectedIndex=index;
+      selectedPage=index;
+
     });
   }
 
@@ -34,25 +46,7 @@ class _HomePageState extends State<HomePage> {
                 GestureDetector(child: IconButton(
                     icon: Icon(Icons.add_circle, size: 32,), onPressed: () {}),)
               ]),
-          body:SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children:[Text('My Work', style: K.style2,),IconButton(onPressed: (){}, icon: Icon(Icons.menu))]),
-                ),
-                ListTile(leading: Icon(Icons.work),title: Text('Issues', style: K.style2),onTap:(){},),
-                ListTile(leading: Icon(Icons.swap_horizontal_circle_rounded),title: Text('Pull Requests', style: K.style2),onTap:(){},),
-                ListTile(leading: Icon(Icons.message),title: Text('Discussions', style: K.style2),onTap:(){},),
-                ListTile(leading: Icon(Icons.book_outlined),title: Text('Repositories', style: K.style2),onTap:(){},),
-                ListTile(leading: Icon(Icons.circle),title: Text('Organizations', style: K.style2),onTap:(){},),
-                TextButton(
-                    onPressed: () => logOut(context),
-                    child: Text("LogOut"),
-                ),
-              ],
-            ),
-          ),
+          body:_PageOptions[selectedPage],
         bottomNavigationBar: BottomNavigationBar(
           fixedColor: Colors.blueGrey,
           unselectedItemColor: Colors.grey,
