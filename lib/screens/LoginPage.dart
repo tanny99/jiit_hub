@@ -10,28 +10,6 @@ import 'package:jiit_hub/responsive_constants.dart';
 import 'package:toast/toast.dart';
 import 'dart:convert';
 import 'package:jiit_hub/screens/Methods.dart';
-var data;
-
-
-
-// Future<int> LoginUser(String enrollment, String password) async {
-//   final Uri url1 =
-//   Uri.parse('https://jiithub-4f546-default-rtdb.firebaseio.com/Students/.json');
-//   final response = await http.get(
-//     url1,
-//   );
-//   data = response.body;
-//   print(data);
-//   // print('##'+jsonDecode(data)[enrollment]);
-//
-//   print(jsonDecode(data)[enrollment]);
-//   print(password);
-//   if (jsonDecode(data)[enrollment] == password) {
-//     return 1;
-//   } else {
-//     return 0;
-//   }
-// }
 
 class LoginPage extends StatefulWidget {
   @override
@@ -53,9 +31,9 @@ class _LoginPageState extends State<LoginPage> {
         ),
       )
           : SingleChildScrollView(
-        child: Column(
-          children: [
-            AppBar(
+          child: Column(
+            children: [
+              AppBar(
               title:Center(child: Text('JIIT HUB!')),
               backgroundColor: Colors.blueGrey[800],
             ),
@@ -78,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 children:[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(CupertinoIcons.person),
+                    child: Icon(CupertinoIcons.mail_solid),
                   ),
                   Container(
                     width: Responsive.width(80, context),
@@ -182,14 +160,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-
               ],
             )
-
-
-
           ],
-
         ),
       ),
     );

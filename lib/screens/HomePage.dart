@@ -35,7 +35,10 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(title: Text('JIIT HUB!'),
+          appBar: AppBar(
+              // title: Text('JIIT HUB!'),
+              title:Center(child: Text('JIIT HUB')),
+              backgroundColor: Colors.blueGrey[800],
               leading: Icon(Icons.icecream_outlined),
               actions: [
                 GestureDetector(child: IconButton(
@@ -58,7 +61,6 @@ class _HomePageState extends State<HomePage> {
           ],
           currentIndex: selectedIndex,
           onTap: _onTap,
-
         ),
 
       ),
