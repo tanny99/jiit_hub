@@ -48,52 +48,68 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text('Disscussions 🔔'),
         backgroundColor: Colors.blueGrey[800],
       ),
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              decoration: kMessageContainerDecoration,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      onChanged: (value) {
-                        //Do something with the user input.
-                        messageText=value;
-                      },
-                      decoration: kMessageTextFieldDecoration,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () async{
-                      //Implement send functionality.
-                      CollectionReference messages =await FirebaseFirestore.instance.collection('messages');
-                      print('1');
-                      print(messageText);
-                      await messages .add({
-                        'sender': loggedInUser.email,
-                        'text': messageText,
-
-                      })
-                          .then((value) => print("User Added"))
-                          .catchError((error) => print("Failed to add user: $error"));
-                      print('sad');
-                      print(loggedInUser.email);
-                      
-                    },
-                    child: Text(
-                      'Send',
-                      style: kSendButtonTextStyle,
-                    ),
-                  ),
-                ],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+            Flexible(
+              child: StreamBuilder(
+                  stream: firestore.collection('messages').snapshots(),
+                  builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+                    if (!snapshot.hasData) {
+                      return CircularProgressIndicator();
+                    }
+                    return ListView(
+                      children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                        Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                        return ListTile(
+                          title: Text(data['text']),
+                          subtitle: Text(data['sender']),
+                        );
+                      }).toList(),
+                    );
+                  }
               ),
             ),
-          ],
-        ),
+
+          Container(
+            decoration: kMessageContainerDecoration,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: TextField(
+                    controller:messageTextController ,
+                    decoration: kMessageTextFieldDecoration,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () async{
+                    //Implement send functionality.
+                    CollectionReference messages =await FirebaseFirestore.instance.collection('messages');
+                    print('1');
+                    print(messageTextController);
+                    await messages .add({
+                      'sender': loggedInUser.email,
+                      'text': messageTextController.text,
+
+                    })
+                        .then((value) => print("User Added"))
+                        .catchError((error) => print("Failed to add user: $error"));
+                    print('sad');
+                    print(loggedInUser.email);
+                    messageTextController.clear();
+
+                  },
+                  child: Text(
+                    'Send',
+                    style: kSendButtonTextStyle,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
