@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'MyProfile.dart';
-import 'Constants.dart' as K;
+import '../Constants.dart' as K;
 import 'HomeScreen.dart';
 import 'NotificationPage.dart';
 import 'package:jiit_hub/screens/Methods.dart';

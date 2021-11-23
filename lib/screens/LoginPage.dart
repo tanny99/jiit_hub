@@ -3,7 +3,7 @@ import 'HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:jiit_hub/screens/HomePage.dart';
 import 'package:jiit_hub/screens/SignupPage.dart';
-import 'Constants.dart' as K;
+import '../Constants.dart' as K;
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:http/http.dart' as http;
 import 'package:jiit_hub/responsive_constants.dart';

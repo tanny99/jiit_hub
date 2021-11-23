@@ -4,7 +4,7 @@ import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:jiit_hub/screens/LoginPage.dart';
 import 'package:toast/toast.dart' ;
 import 'package:jiit_hub/screens/Methods.dart';
-import 'Constants.dart' as K;
+import '../Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
 import 'package:jiit_hub/responsive_constants.dart';
 import 'package:http/http.dart' as http;
