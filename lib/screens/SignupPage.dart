@@ -70,7 +70,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     decoration: InputDecoration(
                         hintText: "Email"
                     ),
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.emailAddress,
                     textAlign: TextAlign.left,
                     controller: EmailController,
                   ),
