@@ -50,7 +50,7 @@ class _ChatScreenState extends State<ChatScreen> {
               }),
         ],
         title: Text('Discussion ⭐'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.blueGrey[800],
       ),
       body: SafeArea(
         child: Column(
@@ -108,7 +108,7 @@ class StreambuilderClass extends StatelessWidget {
           if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(
-                backgroundColor: Colors.blueAccent,
+                backgroundColor: Colors.blueGrey[800],
               ),
             );
           }
@@ -157,11 +157,11 @@ class MessageBubble extends StatelessWidget {
         isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            ' $sender ${DateTime.fromMillisecondsSinceEpoch(time.seconds * 1000)}',// add this only if you want to show the time along with the email. If you dont want this then don't add this DateTime thing
+            ' $sender',// add this only if you want to show the time along with the email. If you dont want this then don't add this DateTime thing
             style: TextStyle(color: Colors.black54, fontSize: 12),
           ),
           Material(
-            color: isMe ? Colors.blueAccent : Colors.white,
+            color: isMe ? Colors.blueGrey[800] : Colors.white,
             borderRadius: isMe
                 ? BorderRadius.only(
                 topLeft: Radius.circular(30),
@@ -177,7 +177,7 @@ class MessageBubble extends StatelessWidget {
               child: Text(
                 text,
                 style: TextStyle(
-                    fontSize: 20, color: isMe ? Colors.white : Colors.black),
+                    fontSize: 15, color: isMe ? Colors.white : Colors.black),
               ),
             ),
           ),

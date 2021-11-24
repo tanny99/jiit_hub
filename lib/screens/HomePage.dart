@@ -4,6 +4,7 @@ import 'MyProfile.dart';
 import '../Constants.dart' as K;
 import 'HomeScreen.dart';
 import 'NotificationPage.dart';
+import 'AddRepository.dart';
 import 'package:jiit_hub/screens/Methods.dart';
 import 'ExplorePage.dart';
 import 'MyProfilePage.dart';
@@ -47,7 +48,9 @@ class _HomePageState extends State<HomePage> {
                       MaterialPageRoute(builder: (context) => MyProfile()));
                 }),),
                 GestureDetector(child: IconButton(
-                    icon: Icon(Icons.add_circle, size: 32,), onPressed: () {}),)
+                    icon: Icon(Icons.add_circle, size: 32,), onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context){return AddRepository();}));
+                }),)
               ]),
           body:_PageOptions[selectedPage],
         bottomNavigationBar: BottomNavigationBar(
