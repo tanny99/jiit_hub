@@ -157,7 +157,7 @@ class MessageBubble extends StatelessWidget {
         isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            ' $sender',// add this only if you want to show the time along with the email. If you dont want this then don't add this DateTime thing
+            ' $sender',
             style: TextStyle(color: Colors.black54, fontSize: 12),
           ),
           Material(

@@ -13,8 +13,12 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Repositories')),
+      appBar: AppBar(
+          title: Text('Repositories'),
+          backgroundColor: Colors.blueGrey[800],
+      ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueGrey,
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.of(context)
@@ -26,15 +30,14 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
         builder: (context, snapshot) {
           return !snapshot.hasData
               ? Center(
-            child: CircularProgressIndicator(),
-          )
+                child: CircularProgressIndicator(),
+              )
               : Container(
-            padding: EdgeInsets.all(4),
-            child: GridView.builder(
-                itemCount: snapshot.data!.docs.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1),
-                itemBuilder: (context, index) {
+                padding: EdgeInsets.all(4),
+                child: GridView.builder(
+                  itemCount: snapshot.data!.docs.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+                  itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.all(3),
                     child: FadeInImage.memoryNetwork(

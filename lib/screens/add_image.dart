@@ -23,7 +23,8 @@ class _AddImageState extends State<AddImage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Add Image'),
+          title: Text('Add File'),
+          backgroundColor: Colors.blueGrey[800],
           actions: [
             FlatButton(
                 onPressed: () {
@@ -33,8 +34,11 @@ class _AddImageState extends State<AddImage> {
                   uploadFile().whenComplete(() => Navigator.of(context).pop());
                 },
                 child: Text(
-                  'upload',
-                  style: TextStyle(color: Colors.white),
+                  'Upload',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 19,
+                  ),
                 ))
           ],
         ),
@@ -49,14 +53,18 @@ class _AddImageState extends State<AddImage> {
                   itemBuilder: (context, index) {
                     return index == 0
                         ? Center(
-                      child: IconButton(
-                          icon: Icon(Icons.add),
-                          onPressed: () =>
-                          !uploading ? chooseImage() : null),
-                    )
+                          child: IconButton(
+                            iconSize: 50,
+                            icon: Icon(Icons.note_add_outlined),
+                            onPressed: () =>
+                            !uploading ? chooseImage() : null),
+                        )
                         : Container(
                       margin: EdgeInsets.all(3),
                       decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 2
+                          ),
                           image: DecorationImage(
                               image: FileImage(_image[index - 1]),
                               fit: BoxFit.cover)),
