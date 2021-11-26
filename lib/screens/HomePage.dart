@@ -7,6 +7,7 @@ import 'NotificationPage.dart';
 import 'AddRepository.dart';
 import 'package:jiit_hub/screens/Methods.dart';
 import 'ExplorePage.dart';
+import 'add_image.dart';
 import 'MyProfilePage.dart';
 class HomePage extends StatefulWidget {
   @override
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 }),),
                 GestureDetector(child: IconButton(
                     icon: Icon(Icons.add_circle, size: 32,), onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context){return AddRepository();}));
+                  Navigator.push(context, MaterialPageRoute(builder: (context){return AddImage();}));
                 }),)
               ]),
           body:_PageOptions[selectedPage],

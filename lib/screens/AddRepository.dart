@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import 'add_image.dart';
-
+FirebaseFirestore _firestore = FirebaseFirestore.instance;
 class AddRepository extends StatefulWidget {
   @override
   _AddRepositoryState createState() => _AddRepositoryState();
@@ -13,7 +13,7 @@ class _AddRepositoryState extends State<AddRepository> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home Page')),
+      appBar: AppBar(title: Text('Repositories')),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
@@ -21,8 +21,8 @@ class _AddRepositoryState extends State<AddRepository> {
               .push(MaterialPageRoute(builder: (context) => AddImage()));
         },
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('imageURLs').snapshots(),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: _firestore.collection('imageURLs').snapshots(),
         builder: (context, snapshot) {
           return !snapshot.hasData
               ? Center(
@@ -31,16 +31,17 @@ class _AddRepositoryState extends State<AddRepository> {
               : Container(
             padding: EdgeInsets.all(4),
             child: GridView.builder(
-                itemCount: snapshot.data.documents.length,
+                itemCount: snapshot.data!.docs.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3),
+                    crossAxisCount: 1),
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.all(3),
                     child: FadeInImage.memoryNetwork(
                         fit: BoxFit.cover,
                         placeholder: kTransparentImage,
-                        image: snapshot.data.documents[index].get('url')),
+                        image: snapshot.data!.docs[index].get('url')),
+
                   );
                 }),
           );
