@@ -1,4 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
+
+import 'add_image.dart';
+
 class AddRepository extends StatefulWidget {
   @override
   _AddRepositoryState createState() => _AddRepositoryState();
@@ -7,21 +12,39 @@ class AddRepository extends StatefulWidget {
 class _AddRepositoryState extends State<AddRepository> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'AddRepository',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text('AddRepository')),
-          backgroundColor: Colors.blueGrey[800],
-        ),
-        body:Column(
-          children: [
-            //code hereaa
-
-          ],
-        ),
-
+    return Scaffold(
+      appBar: AppBar(title: Text('Home Page')),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AddImage()));
+        },
+      ),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('imageURLs').snapshots(),
+        builder: (context, snapshot) {
+          return !snapshot.hasData
+              ? Center(
+            child: CircularProgressIndicator(),
+          )
+              : Container(
+            padding: EdgeInsets.all(4),
+            child: GridView.builder(
+                itemCount: snapshot.data.documents.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3),
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.all(3),
+                    child: FadeInImage.memoryNetwork(
+                        fit: BoxFit.cover,
+                        placeholder: kTransparentImage,
+                        image: snapshot.data.documents[index].get('url')),
+                  );
+                }),
+          );
+        },
       ),
     );
   }
