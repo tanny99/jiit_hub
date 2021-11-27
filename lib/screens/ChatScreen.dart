@@ -23,6 +23,8 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     getUserDetail();
   }
+  
+  //tanny
 
   void getUserDetail() async {
     try {
