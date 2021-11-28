@@ -35,12 +35,16 @@ class _AddRepositoryState extends State<AddRepository> {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1),
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.all(3),
-                    child: FadeInImage.memoryNetwork(
-                        fit: BoxFit.cover,
-                        placeholder: kTransparentImage,
-                        image: snapshot.data!.docs[index].get('url')),
+                  return Column(
+                    children: [
+                      TextButton(onPressed:(){}, child: Text('hi')),
+                      FadeInImage.memoryNetwork(
+                          fit: BoxFit.cover,
+                          placeholder: kTransparentImage,
+                          image: snapshot.data!.docs[index].get('url')),
+
+                    ],
+
 
                   );
                 }),

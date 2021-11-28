@@ -1,10 +1,13 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:path/path.dart' as Path;
+FirebaseFirestore _firestore = FirebaseFirestore.instance;
+late final User loggedInUser;
 
 class AddImage extends StatefulWidget {
   @override
@@ -13,12 +16,23 @@ class AddImage extends StatefulWidget {
 
 class _AddImageState extends State<AddImage> {
   bool uploading = false;
+  final _auth = FirebaseAuth.instance;
   double val = 0;
   late CollectionReference imgRef;
   late firebase_storage.Reference ref;
 
   List<File> _image = [];
   final picker = ImagePicker();
+  void getUserDetail() async {
+    try {
+      final createdUser = await _auth.currentUser as User;
+      if (createdUser != null) {
+        loggedInUser = createdUser;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,7 +144,8 @@ class _AddImageState extends State<AddImage> {
           .child('images/${Path.basename(img.path)}');
       await ref.putFile(img).whenComplete(() async {
         await ref.getDownloadURL().then((value) {
-          imgRef.add({'url': value});
+          imgRef.add({'url': value,
+            'sender': loggedInUser.email,});
           i++;
         });
       });
@@ -141,5 +156,6 @@ class _AddImageState extends State<AddImage> {
   void initState() {
     super.initState();
     imgRef = FirebaseFirestore.instance.collection('imageURLs');
+    getUserDetail();
   }
 }
