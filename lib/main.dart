@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'screens/LoginPage.dart';
+import 'package:jiit_hub/screens/HomePage.dart';
 
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,19 +15,47 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "JIIT HUB",
       debugShowCheckedModeBanner: false,
       home: FutureBuilder(
-        future: _initialization,
-        builder: (context, snapshot){
-          if(snapshot.hasError){
-            print("Error");
+          future: _initialization,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+              case ConnectionState.waiting:
+                return CircularProgressIndicator();
+              default:
+                if (snapshot.hasError)
+                  return Text('Error: ${snapshot.error}');
+                else
+                if(snapshot.data == null)
+                  return LoginPage();
+                else
+                  return HomePage();
+            }
+
           }
-          if(snapshot.connectionState == ConnectionState.done)
-            {return LoginPage();}
-          return CircularProgressIndicator();
-        },
       ),
+      routes: {
+        '/login' : (context) => new LoginPage(),
+        '/feed' : (context) => new HomePage(),
+      },
     );
   }
 }
 // child: LoginPage()
+// MaterialApp(
+// debugShowCheckedModeBanner: false,
+// home: FutureBuilder(
+// future: _initialization,
+// builder: (context, snapshot){
+// if(snapshot.hasError){
+// print("Error");
+// }
+// if(snapshot.connectionState == ConnectionState.done)
+// {return LoginPage();}
+// return CircularProgressIndicator();
+// },
+// ),
+// );
