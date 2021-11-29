@@ -39,12 +39,23 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
                   itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.all(3),
-                    child: FadeInImage.memoryNetwork(
-                        fit: BoxFit.cover,
-                        placeholder: kTransparentImage,
-                        image: snapshot.data!.docs[index].get('url')),
+                    margin: EdgeInsets.only(top: 0,bottom: 5),
+                    child: Column(
+                      children: [
+                        Flexible(
+                          child: FadeInImage.memoryNetwork(
+                              fit: BoxFit.cover,
+                              placeholder: kTransparentImage,
+                              image: snapshot.data!.docs[index].get('url')),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10,top: 2),
+                          child: Container(child: Text('Submitted By- '+snapshot.data!.docs[index].get('sender'),style: TextStyle(fontWeight:FontWeight.w500 ),),alignment: Alignment.bottomLeft,),
+                        )
+                      ],
+                    )
                   );
+                  // Text(snapshot.data!.docs[index].get('sender'))
                 }),
           );
         },
