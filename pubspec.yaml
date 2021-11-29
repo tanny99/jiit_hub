@@ -35,6 +35,7 @@ dependencies:
   transparent_image: ^1.0.0
   image_picker: ^0.8.4+4
   http: ^0.13.3
+  new_gradient_app_bar: ^0.1.4
 #  animated_text_kit:
 #  flutter_svg:
 #  pin_entry_text_field: ^0.1.4
@@ -68,7 +69,11 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - Assets/
     - Assets/jiit_logo.jpg
+    - Assets/jiit_logo-removebg-preview.png
+    - Assets/new.jpg
+    - Assets/Ujjwal.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
