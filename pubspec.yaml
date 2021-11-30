@@ -73,7 +73,7 @@ flutter:
     - Assets/jiit_logo.jpg
     - Assets/jiit_logo-removebg-preview.png
     - Assets/new.jpg
-    - Assets/Ujjwal.jpg
+#    - Assets/Ujjwal.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -56,21 +56,22 @@ class _LoginPageState extends State<LoginPage> {
           : SingleChildScrollView(
           child: Container(
 
-            // decoration: BoxDecoration(
-            //   gradient: LinearGradient(
-            //     begin: Alignment.topCenter,
-            //     end: Alignment.bottomCenter,
-            //     // radius: 1.2,
-            //     colors: [
-            //       // Colors.white,
-            //       // Color.fromRGBO(29, 53, 87, 1),
-            //       Colors.white,
-            //       Color.fromRGBO(29, 53, 87, 1),
-            //     ],
-            //     // focalRadius: 200
-            //     // stops: [0.2,2.2,2.3],
-            //   )
-            // ),
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  // radius: 1.2,
+                  colors: [
+                    // Colors.white,
+                    // Color.fromRGBO(29, 53, 87, 1),
+                    Colors.white,
+                    Colors.lightBlueAccent,
+                    Color.fromRGBO(29, 53, 87, 1),
+                  ],
+                  // focalRadius: 200
+                  // stops: [0.2,2.2],
+                )
+            ),
             child: Column(
               children: [
               Padding(
@@ -85,8 +86,10 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 child: Text('Login',
                     style: TextStyle(
-                  color: Color.fromRGBO(29, 53, 87, 1),
-                      fontSize: 33
+                  // color: Color.fromRGBO(29, 53, 87, 1),
+                      color: Colors.white,
+                      fontSize: 33,
+                      fontWeight: FontWeight.bold
                 ),
                     textAlign: TextAlign.center),
               ),
@@ -97,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                 children:[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(CupertinoIcons.mail_solid),
+                    child: Icon(CupertinoIcons.mail),
                   ),
                   Container(
                     width: Responsive.width(80, context),
@@ -105,6 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
 
                           hintText: "Email Address",
+                          hintStyle: TextStyle(color: Colors.white)
                           // hintStyle: TextStyle(color: Colors.white)
                       ),
                       keyboardType: TextInputType.text,
@@ -121,13 +125,14 @@ class _LoginPageState extends State<LoginPage> {
                 children:[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(CupertinoIcons.lock_fill),
+                    child: Icon(CupertinoIcons.lock),
                   ),
                   Container(
                     width: Responsive.width(80, context),
                     child: TextField(
                       decoration: InputDecoration(
                           hintText: "Password",
+                        hintStyle: TextStyle(color: Colors.white)
                       ),
                       obscureText: true,
                       keyboardType: TextInputType.text,
@@ -198,14 +203,14 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.only(top: 15.0,right: 50),
                       child: Text(
                           'Not registered?',
-                        style: TextStyle(fontSize: 20,color:Colors.blueGrey[800]),
+                        style: TextStyle(fontSize: 20,color:Colors.white),
                       ),
                     ),
                 ),
               ],
             ),
                 SizedBox(
-                  height: Responsive.height(9.45, context),
+                  height: Responsive.height(9.7, context),
                 ),
           ],
         ),

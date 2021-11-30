@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:flutter/painting.dart';
 import 'package:jiit_hub/screens/LoginPage.dart';
 import 'package:toast/toast.dart' ;
 import 'package:jiit_hub/screens/Methods.dart';
@@ -26,6 +27,30 @@ class _CreateAccountState extends State<CreateAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Padding(
+          padding: const EdgeInsets.only(right: 55),
+          child: Center(
+              child: Text(
+                "JIIT HUB",
+                // style: TextStyle(fontFamily: 'RobotoMono'),
+              )),
+        ),
+        backgroundColor: Color.fromRGBO(29, 53, 87, 1),
+        // elevation: 10,
+        // flexibleSpace: Container(
+        //   decoration: BoxDecoration(
+        //       gradient: LinearGradient(
+        //           colors: [
+        //             Colors.deepPurple,
+        //             Colors.purple,
+        //             Colors.pink,
+        //           ],
+        //           // stops: [0.2,2.2,2.3]
+        //       )
+        //   ),
+        // ),
+      ),
       backgroundColor: Colors.white,
       body: isLoading
           ? Center(
@@ -34,26 +59,43 @@ class _CreateAccountState extends State<CreateAccount> {
             ),
          )
           : SingleChildScrollView(
-          child: Column(
-            children: [
-              AppBar(
-                title: Padding(
-                padding: const EdgeInsets.only(right:55.0),
-                child: Center(child: Text('JIIT HUB!'),),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  // radius: 1.2,
+                  colors: [
+                    // Colors.white,
+                    // Color.fromRGBO(29, 53, 87, 1),
+                    Colors.white,
+                    Colors.lightBlueAccent,
+                    Color.fromRGBO(29, 53, 87, 1),
+                  ],
+                  // focalRadius: 200
+                  // stops: [0.2,2.2],
+                )
               ),
-              backgroundColor: Colors.blueGrey[800],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top:20),
-              child: Container(
-                child: Image(image: AssetImage('Assets/jiit_logo.jpg'),height: Responsive.height(30, context),),
+              child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top:20),
+                child: Container(
+                  child: Image(image: AssetImage('Assets/new.jpg'),height: Responsive.height(30, context),),
+                ),
               ),
-            ),
             SizedBox(
               height: Responsive.height(1, context),
             ),
             Container(
-              child: Text('SignUp !',style: K.style1,textAlign: TextAlign.center),
+              child: Text('Sign Up',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    // color: Color.fromRGBO(29, 53, 87, 1),
+                    fontSize: 33,
+                  ),
+                  textAlign: TextAlign.center),
             ),
             SizedBox(
               height: Responsive.height(2, context),
@@ -68,7 +110,8 @@ class _CreateAccountState extends State<CreateAccount> {
                   width: Responsive.width(80, context),
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: "Email"
+                        hintText: "Email",
+                      hintStyle: TextStyle(color: Colors.white)
                     ),
                     keyboardType: TextInputType.emailAddress,
                     textAlign: TextAlign.left,
@@ -89,8 +132,8 @@ class _CreateAccountState extends State<CreateAccount> {
                     width: Responsive.width(80, context),
                     child: TextField(
                       decoration: InputDecoration(
-
-                          hintText: "Enrollment Number"
+                          hintText: "Enrollment Number",
+                          hintStyle: TextStyle(color: Colors.white)
                       ),
                       keyboardType: TextInputType.text,
                       textAlign: TextAlign.left,
@@ -105,13 +148,14 @@ class _CreateAccountState extends State<CreateAccount> {
                 children:[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(CupertinoIcons.lock_fill),
+                    child: Icon(CupertinoIcons.lock),
                   ),
                   Container(
                     width: Responsive.width(80, context),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "Password",
+                          hintStyle: TextStyle(color: Colors.white)
                       ),
                       obscureText: true,
                       keyboardType: TextInputType.text,
@@ -136,7 +180,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   width: Responsive.width(50, context),
                   height: 50,
                   child: ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blueGrey)),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color.fromRGBO(29, 53, 87, 1))),
                     child: Text(
                       'SignUp',
                       style: TextStyle(fontSize: 20,),
@@ -168,7 +212,11 @@ class _CreateAccountState extends State<CreateAccount> {
                 ),
               ],
             ),
+                SizedBox(
+                  height: Responsive.height(9.45, context),
+                )
           ],
+        ),
         ),
       ),
     );
