@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
               // title: Text('JIIT HUB!'),
               title:Center(child: Text('JIIT HUB')),
-              backgroundColor: Colors.blueGrey[800],
+              backgroundColor: Color.fromRGBO(29, 53, 87, 1),
               leading: Icon(Icons.icecream_outlined),
               actions: [
                 GestureDetector(child: IconButton(

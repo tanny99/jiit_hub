@@ -15,10 +15,10 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
     return Scaffold(
       appBar: AppBar(
           title: Text('Repositories'),
-          backgroundColor: Colors.blueGrey[800],
+          backgroundColor: Color.fromRGBO(29, 53, 87, 1),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Color.fromRGBO(29, 53, 87, 1),
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.of(context)
@@ -39,19 +39,54 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
                   itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.only(top: 0,bottom: 5),
+                    margin: EdgeInsets.only(top: 10,bottom: 5),
+                    decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey, width: 3),
+                        borderRadius: BorderRadius.circular(10),
+                    ),
                     child: Column(
                       children: [
-                        Flexible(
-                          child: FadeInImage.memoryNetwork(
-                              fit: BoxFit.cover,
-                              placeholder: kTransparentImage,
-                              image: snapshot.data!.docs[index].get('url')),
-                        ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10,top: 2),
-                          child: Container(child: Text('Submitted By- '+snapshot.data!.docs[index].get('sender'),style: TextStyle(fontWeight:FontWeight.w500 ),),alignment: Alignment.bottomLeft,),
-                        )
+                          padding: const EdgeInsets.only(left: 10,top: 5,bottom: 7),
+                          child: Row(
+                            children: [
+                              Icon(Icons.person_pin_rounded),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Container(
+                                  child: Text(''+snapshot.data!.docs[index].get('sender'),
+                                    style: TextStyle(fontWeight:FontWeight.w500, fontSize: 17),
+                                  ),
+                                  alignment: Alignment.bottomLeft,
+                                  // decoration: InputDecoration(
+                                  //
+                                  // ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                // border: Border.all(color: Colors.grey)
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: FadeInImage.memoryNetwork(
+                                  // width: 250,
+                                  // height: 250,
+                                  fit: BoxFit.fill,
+                                  placeholder: kTransparentImage,
+                                  image: snapshot.data!.docs[index].get('url'),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     )
                   );

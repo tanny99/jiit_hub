@@ -38,7 +38,7 @@ class _AddImageState extends State<AddImage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Add File'),
-          backgroundColor: Colors.blueGrey[800],
+          backgroundColor: Color.fromRGBO(29, 53, 87, 1),
           actions: [
             FlatButton(
                 onPressed: () {

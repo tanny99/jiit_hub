@@ -52,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
               }),
         ],
         title: Text('Discussion ⭐'),
-        backgroundColor: Colors.blueGrey[800],
+        backgroundColor: Color.fromRGBO(29, 53, 87, 1),
       ),
       body: SafeArea(
         child: Column(
@@ -163,7 +163,7 @@ class MessageBubble extends StatelessWidget {
             style: TextStyle(color: Colors.black54, fontSize: 12),
           ),
           Material(
-            color: isMe ? Colors.blueGrey[800] : Colors.white,
+            color: isMe ? Color.fromRGBO(29, 53, 87, 1) : Colors.white,
             borderRadius: isMe
                 ? BorderRadius.only(
                 topLeft: Radius.circular(30),
