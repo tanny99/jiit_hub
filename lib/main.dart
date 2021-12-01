@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:jiit_hub/screens/IntroScreen.dart';
 import 'screens/LoginPage.dart';
 
 Future main() async{
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
             print("Error");
           }
           if(snapshot.connectionState == ConnectionState.done)
-            {return LoginPage();}
+            {return IntroScreen();}
           return CircularProgressIndicator();
         },
       ),
