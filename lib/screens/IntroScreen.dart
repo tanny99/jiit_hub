@@ -19,7 +19,7 @@ class IntroScreen extends StatefulWidget {
 // ------------------ Custom config ------------------
 class IntroScreenState extends State<IntroScreen> {
   List<Slide> slides = [];
-
+//
   @override
   void initState() {
     super.initState();
