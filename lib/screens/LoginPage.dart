@@ -27,9 +27,12 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-            child: Text(
-                "JIIT HUB",
-                // style: TextStyle(fontFamily: 'RobotoMono'),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 55.0),
+              child: Text(
+                  "JIIT HUB",
+                  // style: TextStyle(fontFamily: 'RobotoMono'),
+              ),
             )),
           backgroundColor: Color.fromRGBO(29, 53, 87, 1),
           // elevation: 10,

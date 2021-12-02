@@ -35,13 +35,13 @@ class IntroScreenState extends State<IntroScreen> {
             fontWeight: FontWeight.bold,
             fontFamily: 'RobotoMono'),
         description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        "Jaypee Institute of Information Technology, Noida was established in the year 2001 and has been declared as a 'Deemed to be University' under Section 3 of UGC Act 1956 in the year 2004. JIIT has been constantly ranked amongst the top engineering Institutes in Delhi NCR. Recently it has been ranked among top Engineering Institutes in India by Edu Rand 2014 Engineering College Rankings.",
         styleDescription: TextStyle(
             color: Colors.white,
             fontSize: 20.0,
             fontStyle: FontStyle.italic,
             fontFamily: 'Raleway'),
-        marginDescription: EdgeInsets.only(top: 200),
+        marginDescription: EdgeInsets.only(top: 250),
 
 
 
