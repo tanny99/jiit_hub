@@ -18,6 +18,7 @@ class AcademicsPage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+            //
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
