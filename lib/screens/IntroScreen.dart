@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_slider/dot_animation_enum.dart';
+import 'Choices.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 import 'package:intro_slider/scrollbar_behavior_enum.dart';
@@ -123,7 +124,7 @@ class IntroScreenState extends State<IntroScreen> {
     // Do what you want
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
+      MaterialPageRoute(builder: (context) => ChoicesPage()),
     );
   }
 
