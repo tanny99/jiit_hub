@@ -3,7 +3,6 @@ import 'HubsPage.dart';
 import 'CSE&IT.dart';
 import 'BIO.dart';
 import 'ECE.dart';
-import 'GeneralPage.dart';
 class AcademicsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
