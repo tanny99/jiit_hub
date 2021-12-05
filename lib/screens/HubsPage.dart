@@ -39,6 +39,7 @@ class HubsPage extends StatelessWidget {
                   image: 'Assets/yoga.PNG',
 
                 ),
+                //ujjwal op
                 ImageColumn(
                   title: '•	Jhankaar-Dance Hub •',
                   about: 'Jhankaar , the dance hub is known for  showcasing the inborn talent and calibour to dance. '

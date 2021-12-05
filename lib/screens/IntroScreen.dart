@@ -121,7 +121,7 @@ class IntroScreenState extends State<IntroScreen> {
   }
 
   void onDonePress() {
-    // Do what you want
+    // Do what you want ana_xoxo
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ChoicesPage()),
