@@ -124,7 +124,7 @@ class IntroScreenState extends State<IntroScreen> {
     // Do what you want ana_xoxo
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ChoicesPage()),
+      MaterialPageRoute(builder: (context) => LoginPage()),
     );
   }
 

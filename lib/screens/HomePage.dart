@@ -10,19 +10,29 @@ import 'ExplorePage.dart';
 import 'add_image.dart';
 import 'MyProfilePage.dart';
 class HomePage extends StatefulWidget {
+  final int indexx;
+  const HomePage({required this.indexx});
+
   @override
+
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedIndex=0;
-  int selectedPage = 0;
+
+  // late int indexx;
+  late int selectedIndex=widget.indexx;
+  late int selectedPage = widget.indexx;
+
+
   final _PageOptions=[
     HomeScreen(),
     NotificationPage(),
     ExplorePage(),
     MyProfile()
   ];
+
+
 
   void _onTap(int index){
     setState((){
@@ -39,7 +49,8 @@ class _HomePageState extends State<HomePage> {
       home: Scaffold(
           appBar: AppBar(
               // title: Text('JIIT HUB!'),
-              title:Center(child: Text('JIIT HUB')),
+
+              title:Center(child: Text('JIIT HUB ')),
               backgroundColor: Color.fromRGBO(29, 53, 87, 1),
               leading: Icon(Icons.icecream_outlined),
               actions: [

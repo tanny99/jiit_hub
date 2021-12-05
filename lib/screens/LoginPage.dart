@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage(indexx: 0,)));
                               } else{
                                 print("Login failed");
                                 setState(() {

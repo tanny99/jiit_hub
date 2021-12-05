@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'HomePage.dart';
 class HubsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -7,6 +8,16 @@ class HubsPage extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(Icons.arrow_back_outlined),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context){return HomePage(indexx: 2,);}));
+                },
+              );
+            },
+          ),
           title: Center(child: Text(
               'Hubs Page',
               style: TextStyle(fontSize: 25),
