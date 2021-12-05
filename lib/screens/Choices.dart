@@ -6,6 +6,7 @@ class ChoicesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
           height: double.infinity,
@@ -20,9 +21,60 @@ class ChoicesPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 70,width:300,child: TextButton(onPressed:(){ Navigator.push(context,MaterialPageRoute(builder: (context) => HubsPage()),);}, child: Text('HUBS',style: TextStyle(color: Colors.black),),style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.yellow)),)),
-              TextButton(onPressed:(){ Navigator.push(context,MaterialPageRoute(builder: (context) => AcademicsPage()),);}, child: Text('ACADEMICS',style: TextStyle(color: Colors.black)),style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),),
-              TextButton(onPressed:(){ Navigator.push(context,MaterialPageRoute(builder: (context) => GeneralPage()),);}, child: Text('GENERAL',style: TextStyle(color: Colors.black)),style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),),
+              Container(
+                margin: const EdgeInsets.only(bottom: 50),
+                child: SizedBox( height: 70, width: 250,
+                  child: TextButton(
+                    onPressed:()
+                    {
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => GeneralPage()),);
+                    },
+                    child: Text('GENERAL',
+                      style: TextStyle(color: Colors.white,fontSize: 20),
+                    ),
+                    style: TextButton.styleFrom(
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(35))),
+                      side: BorderSide(color: Colors.white, width: 3),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 50),
+                child: SizedBox(height: 70,width:250,
+                    child: TextButton(
+                      onPressed:()
+                      {
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => HubsPage()),);
+                        },
+                      child: Text('HUBS',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      style: TextButton.styleFrom(
+                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(35))),
+                          side: BorderSide(color: Colors.white, width: 3),
+                      ),
+                    ),
+                ),
+              ),
+              Container(
+                child: SizedBox(height: 70,width: 250,
+                  child: TextButton(
+                    onPressed:()
+                    {
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => AcademicsPage()),);
+                      },
+                    child: Text('ACADEMICS',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    style: TextButton.styleFrom(
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(35))),
+                      side: BorderSide(color: Colors.white, width: 3),
+                    ),
+                  ),
+                ),
+              ),
+
             ],
           ) /* add child content here */,
         ),

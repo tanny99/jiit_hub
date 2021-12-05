@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'HomePage.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:jiit_hub/screens/HomePage.dart';
 import 'package:jiit_hub/screens/SignupPage.dart';
@@ -58,21 +57,15 @@ class _LoginPageState extends State<LoginPage> {
       )
           : SingleChildScrollView(
           child: Container(
-
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  // radius: 1.2,
                   colors: [
-                    // Colors.white,
-                    // Color.fromRGBO(29, 53, 87, 1),
                     Colors.white,
                     Colors.lightBlueAccent,
                     Color.fromRGBO(29, 53, 87, 1),
                   ],
-                  // focalRadius: 200
-                  // stops: [0.2,2.2],
                 )
             ),
             child: Column(

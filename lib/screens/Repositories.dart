@@ -72,13 +72,10 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
-                                // border: Border.all(color: Colors.grey)
                               ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: FadeInImage.memoryNetwork(
-                                  // width: 250,
-                                  // height: 250,
                                   fit: BoxFit.fill,
                                   placeholder: kTransparentImage,
                                   image: snapshot.data!.docs[index].get('url'),

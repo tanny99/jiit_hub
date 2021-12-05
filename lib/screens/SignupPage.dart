@@ -110,7 +110,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   width: Responsive.width(80, context),
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: "Email",
+                        hintText: "Email Address",
                       hintStyle: TextStyle(color: Colors.white)
                     ),
                     keyboardType: TextInputType.emailAddress,
