@@ -48,17 +48,15 @@ class _HomePageState extends State<HomePage> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           appBar: AppBar(
-              // title: Text('JIIT HUB!'),
-
               title:Center(child: Text('JIIT HUB ')),
               backgroundColor: Color.fromRGBO(29, 53, 87, 1),
               leading: Icon(Icons.icecream_outlined),
               actions: [
-                GestureDetector(child: IconButton(
-                    icon: Icon(Icons.person, size: 32,), onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyProfile()));
-                }),),
+                // GestureDetector(child: IconButton(
+                //     icon: Icon(Icons.person, size: 32,), onPressed: () {
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => MyProfile()));
+                // }),),
                 GestureDetector(child: IconButton(
                     icon: Icon(Icons.add_circle, size: 32,), onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context){return AddImage();}));
@@ -66,6 +64,7 @@ class _HomePageState extends State<HomePage> {
               ]),
           body:_PageOptions[selectedPage],
         bottomNavigationBar: BottomNavigationBar(
+          // backgroundColor: Colors.indigo,
           fixedColor: Colors.blueGrey,
           unselectedItemColor: Colors.grey,
           items: [

@@ -24,14 +24,14 @@ class ExplorePage extends StatelessWidget {
             children: [
               Container(
                 margin: const EdgeInsets.only(bottom: 50),
-                child: SizedBox( height: 70, width: 250,
+                child: SizedBox(height: 70,width: 250,
                   child: TextButton(
                     onPressed:()
                     {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => GeneralPage()),);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => AcademicsPage()),);
                     },
-                    child: Text('GENERAL',
-                      style: TextStyle(color: Colors.white,fontSize: 20),
+                    child: Text('ACADEMICS',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     style: TextButton.styleFrom(
                       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(35))),
@@ -59,14 +59,14 @@ class ExplorePage extends StatelessWidget {
                 ),
               ),
               Container(
-                child: SizedBox(height: 70,width: 250,
+                child: SizedBox( height: 70, width: 250,
                   child: TextButton(
                     onPressed:()
                     {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => AcademicsPage()),);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => GeneralPage()),);
                     },
-                    child: Text('ACADEMICS',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    child: Text('GENERAL',
+                      style: TextStyle(color: Colors.white,fontSize: 20),
                     ),
                     style: TextButton.styleFrom(
                       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(35))),

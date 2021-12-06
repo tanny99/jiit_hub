@@ -7,7 +7,11 @@ class GeneralPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('General Page'),
+          title: Padding(
+            padding: const EdgeInsets.only(right: 50.0),
+            child: Center(child: Text('General Page')),
+          ),
+          backgroundColor: Color.fromRGBO(29, 53, 87, 1),
           leading: Builder(
             builder: (BuildContext context) {
               return IconButton(

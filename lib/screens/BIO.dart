@@ -5,8 +5,13 @@ class BiotechPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: Text('Biotech'),
+        appBar: AppBar(title: Padding(
+          padding: const EdgeInsets.only(right: 50.0),
+          child: Center(child: Text('ECE')),
+        ),
+          backgroundColor: Color.fromRGBO(29, 53, 87, 1),
           leading: Builder(
             builder: (BuildContext context) {
               return IconButton(

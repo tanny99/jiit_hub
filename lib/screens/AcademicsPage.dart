@@ -78,7 +78,22 @@ class AcademicsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              TextButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context){return HomePage(indexx: 2,);}));}, child: Icon(Icons.arrow_back ,)),
+              Container(
+                margin: const EdgeInsets.only(top:50),
+                child: SizedBox(
+                    child: TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context){return HomePage(indexx: 2,);}));
+                          },
+                        child: Icon(Icons.arrow_back, ),
+                      style: TextButton.styleFrom(
+                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(35))),
+                        side: BorderSide(color: Colors.white, width: 3),
+                      ),
+                    ),
+                ),
+              ),
             ],
 
               ) /* add child content here */,

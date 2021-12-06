@@ -18,10 +18,13 @@ class HubsPage extends StatelessWidget {
               );
             },
           ),
-          title: Center(child: Text(
-              'Hubs Page',
-              style: TextStyle(fontSize: 25),
-          ),
+          title: Padding(
+            padding: const EdgeInsets.only(right: 55.0),
+            child: Center(child: Text(
+                'Hubs Page',
+                style: TextStyle(fontSize: 25),
+            ),
+            ),
           ),
           backgroundColor: Color.fromRGBO(29, 53, 87, 1),
         ),
@@ -50,13 +53,12 @@ class HubsPage extends StatelessWidget {
                   image: 'Assets/yoga.PNG',
 
                 ),
-                //ujjwal op
                 ImageColumn(
                   title: '•	Jhankaar-Dance Hub •',
                   about: 'Jhankaar , the dance hub is known for  showcasing the inborn talent and calibour to dance. '
                         'The infinite love and passion for dancing bring out the inner core of us through the stage. '
                       'It also nurtures various students interested in dancing, want to participate and enhance their skills through our different well trained and highly ardent dance troops like the MMV-the western troop ,'
-                      'the Nrityang-the Indian classical troop and the Surkhaab –the Bhangra troop.',
+                      'the Nrityang-the Indian classical troop and the Surkhaab – the Bhangra troop.',
                   image: 'Assets/jhankar.PNG',
                 ),
                 ImageColumn(title: '•	Radiance •',about: 'The effulgence of innocence and glow of mirth was felt as an audience to the exhibition of talents by the students and little faculty kids during these events.The stage events of Radiance came alive when the students presented an amalgamation of amplification of self confidence and extempore. These events focused at leveraging an opportunity to the students and little star kids to polish their skills by opening new vistas for them. The flagship of audience ignited the passion of the participants for performing arts and further stimulated them to deliver stupendous performance.',image: 'Assets/radiance.PNG',),
