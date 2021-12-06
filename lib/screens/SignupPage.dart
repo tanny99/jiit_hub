@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:flutter/painting.dart';
 import 'package:jiit_hub/screens/LoginPage.dart';
-import 'package:toast/toast.dart' ;
+// import 'package:toast/toast.dart' ;
 import 'package:jiit_hub/screens/Methods.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
 import 'package:jiit_hub/responsive_constants.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 // var data;
@@ -23,6 +25,7 @@ class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController EnrollmentController=TextEditingController();
   final TextEditingController PasswordController=TextEditingController();
   bool isLoading = false;
+  bool _isValid = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,23 +36,9 @@ class _CreateAccountState extends State<CreateAccount> {
           child: Center(
               child: Text(
                 "JIIT HUB",
-                // style: TextStyle(fontFamily: 'RobotoMono'),
               )),
         ),
         backgroundColor: Color.fromRGBO(29, 53, 87, 1),
-        // elevation: 10,
-        // flexibleSpace: Container(
-        //   decoration: BoxDecoration(
-        //       gradient: LinearGradient(
-        //           colors: [
-        //             Colors.deepPurple,
-        //             Colors.purple,
-        //             Colors.pink,
-        //           ],
-        //           // stops: [0.2,2.2,2.3]
-        //       )
-        //   ),
-        // ),
       ),
       backgroundColor: Colors.white,
       body: isLoading
@@ -64,16 +53,11 @@ class _CreateAccountState extends State<CreateAccount> {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  // radius: 1.2,
                   colors: [
-                    // Colors.white,
-                    // Color.fromRGBO(29, 53, 87, 1),
                     Colors.white,
                     Colors.lightBlueAccent,
                     Color.fromRGBO(29, 53, 87, 1),
                   ],
-                  // focalRadius: 200
-                  // stops: [0.2,2.2],
                 )
               ),
               child: Column(
@@ -92,7 +76,6 @@ class _CreateAccountState extends State<CreateAccount> {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    // color: Color.fromRGBO(29, 53, 87, 1),
                     fontSize: 33,
                   ),
                   textAlign: TextAlign.center),
@@ -186,6 +169,15 @@ class _CreateAccountState extends State<CreateAccount> {
                       style: TextStyle(fontSize: 20,),
                     ),
                     onPressed: () {
+                      _isValid = EmailValidator.validate(EmailController.text);
+                        if(!(_isValid)){
+                          Fluttertoast.showToast(
+                              msg: 'Enter a Valid Email',
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.TOP,
+                              timeInSecForIosWeb: 1,
+                              fontSize: 16.0);
+                        }
                         if(EmailController.text.isNotEmpty &&
                         EnrollmentController.text.isNotEmpty &&
                         PasswordController.text.isNotEmpty){
