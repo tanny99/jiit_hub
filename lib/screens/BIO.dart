@@ -13,7 +13,7 @@ class BiotechPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: Padding(
           padding: const EdgeInsets.only(right: 50.0),
-          child: Center(child: Text('ECE')),
+          child: Center(child: Text('Biotechnology')),
         ),
           backgroundColor: Color.fromRGBO(29, 53, 87, 1),
           leading: Builder(
@@ -25,7 +25,8 @@ class BiotechPage extends StatelessWidget {
                 },
               );
             },
-          ),),
+          ),
+        ),
         body: WebView(
           initialUrl: 'https://www.jiit.ac.in/academicsfacultybio',
           onWebViewCreated: (WebViewController webViewController) {

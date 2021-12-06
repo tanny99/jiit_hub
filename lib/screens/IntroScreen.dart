@@ -6,21 +6,13 @@ import 'package:intro_slider/slide_object.dart';
 import 'package:intro_slider/scrollbar_behavior_enum.dart';
 import 'LoginPage.dart';
 
-
-
-
-
 class IntroScreen extends StatefulWidget {
-  // IntroScreen({required Key key}) : super(key: key);
-
   @override
   IntroScreenState createState() => new IntroScreenState();
 }
 
-// ------------------ Custom config ------------------
 class IntroScreenState extends State<IntroScreen> {
   List<Slide> slides = [];
-//
   @override
   void initState() {
     super.initState();
@@ -43,9 +35,6 @@ class IntroScreenState extends State<IntroScreen> {
             fontStyle: FontStyle.italic,
             fontFamily: 'Raleway'),
         marginDescription: EdgeInsets.only(top: 250),
-
-
-
         backgroundImage: "Assets/JiitHub1.png",
         directionColorBegin: Alignment.topLeft,
         directionColorEnd: Alignment.bottomRight,
@@ -84,7 +73,6 @@ class IntroScreenState extends State<IntroScreen> {
         description:
         "Start conversation with anyone from the community. Discuss your doubts and ideas in our discussion area",
         marginDescription: EdgeInsets.only(top: 350),
-
         styleDescription: TextStyle(
             color: Color(0xffFFDAB9),
             fontSize: 20.0,
@@ -107,7 +95,6 @@ class IntroScreenState extends State<IntroScreen> {
         description:
         "Tweet motivational quotes or share your thoughts with everyone.",
         marginDescription: EdgeInsets.only(top: 350),
-
         styleDescription: TextStyle(
             color: Color(0xff7FFFD4),
             fontSize: 20.0,
@@ -121,7 +108,6 @@ class IntroScreenState extends State<IntroScreen> {
   }
 
   void onDonePress() {
-    // Do what you want ana_xoxo
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => LoginPage()),
@@ -161,32 +147,25 @@ class IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return new IntroSlider(
-      // List slides
       slides: this.slides,
 
-      // Skip button
       renderSkipBtn: this.renderSkipBtn(),
       skipButtonStyle: myButtonStyle(),
 
-      // Next button
       renderNextBtn: this.renderNextBtn(),
       nextButtonStyle: myButtonStyle(),
 
-      // Done button
       renderDoneBtn: this.renderDoneBtn(),
       onDonePress: this.onDonePress,
       doneButtonStyle: myButtonStyle(),
 
-      // Dot indicator
       colorDot: Color(0x33FFA8B0),
       colorActiveDot: Color(0xffFFA8B0),
       sizeDot: 13.0,
 
-      // Show or hide status bar
       hideStatusBar: true,
       backgroundColorAllSlides: Colors.grey,
 
-      // Scrollbar
       verticalScrollbarBehavior: scrollbarBehavior.SHOW_ALWAYS,
     );
   }

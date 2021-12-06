@@ -6,7 +6,7 @@ class HubsPage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         appBar: AppBar(
           leading: Builder(
             builder: (BuildContext context) {
@@ -30,17 +30,17 @@ class HubsPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: const FractionalOffset(0.0, 0.0),
-                  end: const FractionalOffset(1.0, 0.0),
-                  colors: [
-                    Colors.white,
-                    Colors.lightBlueAccent,
-                    Colors.indigo,
-                  ],
-                ),
-            ),
+            // decoration: BoxDecoration(
+            //     gradient: LinearGradient(
+            //       begin: const FractionalOffset(0.0, 0.0),
+            //       end: const FractionalOffset(1.0, 0.0),
+            //       colors: [
+            //         Colors.white,
+            //         Colors.lightBlueAccent,
+            //         Colors.indigo,
+            //       ],
+            //     ),
+            // ),
             child: Column(
               children: [
                 ImageColumn(
