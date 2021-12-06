@@ -178,7 +178,16 @@ class _CreateAccountState extends State<CreateAccount> {
                               timeInSecForIosWeb: 1,
                               fontSize: 16.0);
                         }
-                        if(EmailController.text.isNotEmpty &&
+                        else if(!EmailController.text.contains('@mail.jiit.ac.in')){
+                          Fluttertoast.showToast(
+                              msg: 'Enter a Valid Email',
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.TOP,
+                              timeInSecForIosWeb: 1,
+                              fontSize: 16.0);
+
+                        }
+                        else if(EmailController.text.isNotEmpty &&
                         EnrollmentController.text.isNotEmpty &&
                         PasswordController.text.isNotEmpty){
                           setState(() {
