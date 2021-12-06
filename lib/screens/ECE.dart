@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'AcademicsPage.dart';
+import 'dart:async';
+import 'package:webview_flutter/webview_flutter.dart';
 class ECEPage extends StatelessWidget {
+  Completer<WebViewController> _controller = Completer<WebViewController>();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,6 +20,12 @@ class ECEPage extends StatelessWidget {
               );
             },
           ),),
+        body: WebView(
+          initialUrl: 'https://www.jiit.ac.in/electronics-and-communication-faculty',
+          onWebViewCreated: (WebViewController webViewController) {
+            _controller.complete(webViewController);
+          },
+        ),
       ),
     );
   }
