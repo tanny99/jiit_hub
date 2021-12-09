@@ -24,7 +24,8 @@ class CSE_ITPage extends StatelessWidget {
                 },
               );
             },
-          ),),
+          ),
+        ),
         body: WebView(
           initialUrl: 'https://www.jiit.ac.in/computer-science-and-it-faculty',
           onWebViewCreated: (WebViewController webViewController) {

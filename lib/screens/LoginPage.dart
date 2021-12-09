@@ -3,13 +3,9 @@ import 'HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:jiit_hub/screens/HomePage.dart';
 import 'package:jiit_hub/screens/SignupPage.dart';
-import '../Constants.dart' as K;
-import 'package:cupertino_icons/cupertino_icons.dart';
-import 'package:http/http.dart' as http;
 import 'package:jiit_hub/responsive_constants.dart';
-import 'package:toast/toast.dart';
-import 'dart:convert';
 import 'package:jiit_hub/screens/Methods.dart';
+import '../Constants.dart' as K;
 
 class LoginPage extends StatefulWidget {
   @override
@@ -30,23 +26,10 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.only(right: 55.0),
               child: Text(
                   "JIIT HUB",
-                  // style: TextStyle(fontFamily: 'RobotoMono'),
               ),
-            )),
+            ),
+        ),
           backgroundColor: Color.fromRGBO(29, 53, 87, 1),
-          // elevation: 10,
-        // flexibleSpace: Container(
-        //   decoration: BoxDecoration(
-        //       gradient: LinearGradient(
-        //           colors: [
-        //             Colors.deepPurple,
-        //             Colors.purple,
-        //             Colors.pink,
-        //           ],
-        //           // stops: [0.2,2.2,2.3]
-        //       )
-        //   ),
-        // ),
       ),
       backgroundColor: Color.fromRGBO(231, 227, 238, 1),
 
@@ -56,9 +39,9 @@ class _LoginPageState extends State<LoginPage> {
         ),
       )
           : SingleChildScrollView(
-          child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
@@ -68,150 +51,145 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 )
             ),
-            child: Column(
-              children: [
-              Padding(
-                padding: const EdgeInsets.only(top:20),
-                child: Container(
-                  child: Image(image: AssetImage('Assets/new.jpg'),height: Responsive.height(30, context),),
-                ),
-              ),
-              SizedBox(
-                height: Responsive.height(1, context),
-              ),
-              Container(
-                child: Text('Login',
-                    style: TextStyle(
-                  // color: Color.fromRGBO(29, 53, 87, 1),
-                      color: Colors.white,
-                      fontSize: 33,
-                      fontWeight: FontWeight.bold
-                ),
-                    textAlign: TextAlign.center),
-              ),
-              SizedBox(
-                height: Responsive.height(2, context),
-              ),
-              Row(
-                children:[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(CupertinoIcons.mail),
+              child: Column(
+                children: [
+                Padding(
+                  padding: const EdgeInsets.only(top:20),
+                  child: Container(
+                    child: Image(image: AssetImage('Assets/new.jpg'),height: Responsive.height(30, context),),
                   ),
-                  Container(
-                    width: Responsive.width(80, context),
-                    child: TextField(
-                      decoration: InputDecoration(
-
+                ),
+                SizedBox(
+                  height: Responsive.height(1, context),
+                ),
+                Container(
+                  child: Text('Login',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 33,
+                        fontWeight: FontWeight.bold
+                  ),
+                      textAlign: TextAlign.center),
+                ),
+                SizedBox(
+                  height: Responsive.height(2, context),
+                ),
+                Row(
+                  children:[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(CupertinoIcons.mail),
+                    ),
+                    Container(
+                      width: Responsive.width(80, context),
+                      child: TextField(
+                        decoration: InputDecoration(
                           hintText: "Email Address",
                           hintStyle: TextStyle(color: Colors.white)
-                          // hintStyle: TextStyle(color: Colors.white)
+                        ),
+                        keyboardType: TextInputType.text,
+                        textAlign: TextAlign.left,
+                        controller: EnrollmentController,
                       ),
-                      keyboardType: TextInputType.text,
-                      textAlign: TextAlign.left,
-                      controller: EnrollmentController,
-
                     ),
-                  ),]
-            ),
-            SizedBox(
-              height: Responsive.height(2, context),
-            ),
-            Row(
-                children:[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(CupertinoIcons.lock),
-                  ),
-                  Container(
-                    width: Responsive.width(80, context),
-                    child: TextField(
-                      decoration: InputDecoration(
+                  ]
+                ),
+                SizedBox(
+                  height: Responsive.height(2, context),
+                ),
+                Row(
+                  children:[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(CupertinoIcons.lock),
+                    ),
+                    Container(
+                      width: Responsive.width(80, context),
+                      child: TextField(
+                        decoration: InputDecoration(
                           hintText: "Password",
-                        hintStyle: TextStyle(color: Colors.white)
+                          hintStyle: TextStyle(color: Colors.white)
+                        ),
+                        obscureText: true,
+                        keyboardType: TextInputType.text,
+                        textAlign: TextAlign.left,
+                        controller: PasswordController,
                       ),
-                      obscureText: true,
-                      keyboardType: TextInputType.text,
-                      textAlign: TextAlign.left,
-                      controller: PasswordController,
-
                     ),
-                  ),
-                ]
-            ),
-            SizedBox(
-              height: Responsive.height(5, context),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: Responsive.width(50, context),
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color.fromRGBO(29, 53, 87, 1))),
-                    child: Text(
-                      'Login',
-                      style: TextStyle(fontSize: 20,),
-                    ),
-                    onPressed: ()async {
-                        if(EnrollmentController.text.isNotEmpty &&
-                          PasswordController.text.isNotEmpty) {
-                            setState(() {
-                              isLoading = true;
-                            });
-
-                            LogIn(EnrollmentController.text, PasswordController.text)
-                            .then((user) {
-                              if(user != null) {
-                                print("Login Successful");
-                                setState(() {
-                                  isLoading = false;
-                                });
-                                Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage(indexx: 0,)));
-                              } else{
-                                print("Login failed");
-                                setState(() {
-                                  isLoading = false;
-                                });
-                              }
-                            });
-                        } else{
-                          print("Please fill the form correctly");
-                        }
-                    },
-                  ),
+                  ]
                 ),
-              ],
-            ),
-              SizedBox(
-              height: Responsive.height(2, context),
-            ),
-              Row(
+                SizedBox(
+                  height: Responsive.height(5, context),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: Responsive.width(50, context),
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color.fromRGBO(29, 53, 87, 1))),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(fontSize: 20,),
+                        ),
+                        onPressed: ()async {
+                          if(EnrollmentController.text.isNotEmpty &&
+                            PasswordController.text.isNotEmpty) {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              LogIn(EnrollmentController.text, PasswordController.text)
+                              .then((user) {
+                                if(user != null) {
+                                  print("Login Successful");
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage(indexx: 0,)));
+                                } else{
+                                  print("Login failed");
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                }
+                              });
+                          } else{
+                            print("Please fill the form correctly");
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: Responsive.height(2, context),
+                ),
+                Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                   onPressed: (){
-                     Navigator.push(context, MaterialPageRoute(builder: (_)=> CreateAccount()));
-                   },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 15.0,right: 50),
-                      child: Text(
-                          'Not registered?',
-                        style: TextStyle(fontSize: 20,color:Colors.white),
+                  children: [
+                    TextButton(
+                    onPressed: (){
+                       Navigator.push(context, MaterialPageRoute(builder: (_)=> CreateAccount()));
+                    },
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 15.0,right: 50),
+                        child: Text(
+                            'Not registered?',
+                          style: TextStyle(fontSize: 20,color:Colors.white),
+                        ),
                       ),
                     ),
+                ],
                 ),
-              ],
-            ),
                 SizedBox(
                   height: Responsive.height(9.7, context),
                 ),
-          ],
-        ),
+             ],
+            ),
+            ),
           ),
-      ),
     );
   }
 }

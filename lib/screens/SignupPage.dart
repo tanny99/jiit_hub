@@ -1,19 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:flutter/painting.dart';
 import 'package:jiit_hub/screens/LoginPage.dart';
-// import 'package:toast/toast.dart' ;
 import 'package:jiit_hub/screens/Methods.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
 import 'package:jiit_hub/responsive_constants.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-// var data;
-
+import '../Constants.dart' as K;
 
 class CreateAccount extends StatefulWidget {
   @override
