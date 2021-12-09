@@ -13,7 +13,7 @@ Future<User?> createAccount(String email, String enroll, String password) async{
     )).user;
 
     if(user != null){
-      print("Login Successful!");
+      print("Account Creation Successful!");
       return user;
     } else{
       print("Account creation failed");
