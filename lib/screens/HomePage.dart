@@ -19,8 +19,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  // late int indexx;
   late int selectedIndex=widget.indexx;
   late int selectedPage = widget.indexx;
 

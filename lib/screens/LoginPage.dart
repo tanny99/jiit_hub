@@ -5,6 +5,7 @@ import 'package:jiit_hub/screens/HomePage.dart';
 import 'package:jiit_hub/screens/SignupPage.dart';
 import 'package:jiit_hub/responsive_constants.dart';
 import 'package:jiit_hub/screens/Methods.dart';
+import 'package:jiit_hub/screens/ExplorePage.dart';
 import '../Constants.dart' as K;
 
 class LoginPage extends StatefulWidget {
@@ -147,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                                   setState(() {
                                     isLoading = false;
                                   });
-                                  Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage(indexx: 0,)));
+                                  Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage(indexx: 2)));
                                 } else{
                                   print("Login failed");
                                   setState(() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jiit_hub/screens/CSEMainPage.dart';
 import 'HubsPage.dart';
-import 'CSE&IT.dart';
+import 'CSEFaculty.dart';
 import 'BIO.dart';
 import 'HomePage.dart';
 import 'ECE.dart';
@@ -30,7 +31,7 @@ class AcademicsPage extends StatelessWidget {
                 child: SizedBox(height: 70,width:250,
                   child: TextButton(
                     onPressed:(){
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => CSE_ITPage()),);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => CSEMainPage()),);
                     },
                     child: Text(
                       'CSE & IT',

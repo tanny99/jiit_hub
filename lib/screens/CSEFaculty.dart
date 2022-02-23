@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'AcademicsPage.dart';
 import 'dart:async';
 import 'package:webview_flutter/webview_flutter.dart';
-class CSE_ITPage extends StatelessWidget {
+class CSEFaculty extends StatelessWidget {
   Completer<WebViewController> _controller = Completer<WebViewController>();
 
   @override
