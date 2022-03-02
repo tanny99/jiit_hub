@@ -9,16 +9,18 @@ import 'package:jiit_hub/screens/Methods.dart';
 import 'ExplorePage.dart';
 import 'add_image.dart';
 import 'MyProfilePage.dart';
-class HomePage extends StatefulWidget {
+class MyWork extends StatefulWidget {
   final int indexx;
-  const HomePage({required this.indexx});
+  const MyWork({required this.indexx});
 
   @override
 
-  _HomePageState createState() => _HomePageState();
+  _MyWorkState createState() => _MyWorkState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MyWorkState extends State<MyWork> {
+
+  // late int indexx;
   late int selectedIndex=widget.indexx;
   late int selectedPage = widget.indexx;
 
@@ -50,11 +52,6 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Color.fromRGBO(29, 53, 87, 1),
               leading: Icon(Icons.icecream_outlined),
               actions: [
-                // GestureDetector(child: IconButton(
-                //     icon: Icon(Icons.person, size: 32,), onPressed: () {
-                //   Navigator.push(context,
-                //       MaterialPageRoute(builder: (context) => MyProfile()));
-                // }),),
                 GestureDetector(child: IconButton(
                     icon: Icon(Icons.add_circle, size: 32,), onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context){return AddImage();}));

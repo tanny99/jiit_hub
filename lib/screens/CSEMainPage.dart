@@ -1,10 +1,13 @@
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:jiit_hub/screens/AcademicsPage.dart';
 import 'HubsPage.dart';
 import 'CSEFaculty.dart';
 import 'BIO.dart';
-import 'HomePage.dart';
+import 'CSE_ITProject.dart';
+// import 'HomePage.dart';
+import 'MyWork.dart';
 import 'ECE.dart';
 class CSEMainPage extends StatelessWidget {
   @override
@@ -32,7 +35,7 @@ class CSEMainPage extends StatelessWidget {
                   child: SizedBox(height: 70,width:250,
                     child: TextButton(
                       onPressed:(){
-                        // Navigator.push(context,MaterialPageRoute(builder: (context) => CSE_ITPage()),);
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => CSE_ITProject()),);
                       },
                       child: Text(
                         'CSE & IT Projects',
@@ -69,7 +72,8 @@ class CSEMainPage extends StatelessWidget {
                   child: SizedBox(
                     child: TextButton(
                       onPressed: (){
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
+                        Navigator.push(context, MaterialPageRoute(builder: (context){return AcademicsPage();}));
                       },
                       child: Icon(Icons.arrow_back, ),
                       style: TextButton.styleFrom(

@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'HomePage.dart';
+import 'package:jiit_hub/screens/MyWork.dart';
+// import 'HomePage.dart';
 import 'package:flutter/material.dart';
-import 'package:jiit_hub/screens/HomePage.dart';
+// import 'package:jiit_hub/screens/HomePage.dart';
 import 'package:jiit_hub/screens/SignupPage.dart';
 import 'package:jiit_hub/responsive_constants.dart';
 import 'package:jiit_hub/screens/Methods.dart';
@@ -148,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                                   setState(() {
                                     isLoading = false;
                                   });
-                                  Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage(indexx: 2)));
+                                  Navigator.push(context, MaterialPageRoute(builder: (_) => MyWork(indexx: 2)));
                                 } else{
                                   print("Login failed");
                                   setState(() {

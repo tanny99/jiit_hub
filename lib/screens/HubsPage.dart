@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'HomePage.dart';
+import 'MyWork.dart';
 class HubsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class HubsPage extends StatelessWidget {
               return IconButton(
                 icon: const Icon(Icons.arrow_back_outlined),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context){return HomePage(indexx: 2,);}));
+                  Navigator.push(context, MaterialPageRoute(builder: (context){return MyWork(indexx: 2,);}));
                 },
               );
             },

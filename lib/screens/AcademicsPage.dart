@@ -3,7 +3,7 @@ import 'package:jiit_hub/screens/CSEMainPage.dart';
 import 'HubsPage.dart';
 import 'CSEFaculty.dart';
 import 'BIO.dart';
-import 'HomePage.dart';
+import 'MyWork.dart';
 import 'ECE.dart';
 class AcademicsPage extends StatelessWidget {
   @override
@@ -85,7 +85,7 @@ class AcademicsPage extends StatelessWidget {
                     child: TextButton(
                         onPressed: (){
                           Navigator.push(
-                              context, MaterialPageRoute(builder: (context){return HomePage(indexx: 2,);}));
+                              context, MaterialPageRoute(builder: (context){return MyWork(indexx: 2,);}));
                           },
                         child: Icon(Icons.arrow_back, ),
                       style: TextButton.styleFrom(
