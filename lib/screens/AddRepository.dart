@@ -37,7 +37,6 @@ class _AddRepositoryState extends State<AddRepository> {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      TextButton(onPressed:(){}, child: Text('hi')),
                       FadeInImage.memoryNetwork(
                           fit: BoxFit.cover,
                           placeholder: kTransparentImage,

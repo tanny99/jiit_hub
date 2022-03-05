@@ -3,12 +3,13 @@ import 'package:jiit_hub/screens/CSE_ITProject.dart';
 import 'package:jiit_hub/responsive_constants.dart';
 import '../Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
+import 'add_image.dart';
 
 final TextEditingController ProjNameController = TextEditingController();
 final TextEditingController YourNameController = TextEditingController();
 final TextEditingController KeywordsController = TextEditingController();
 final TextEditingController DescriptionController = TextEditingController();
-
+List<String>Keywords=[];
 class AddProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -40,14 +41,123 @@ class AddProject extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            child: Column(
-              children: [
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                    SizedBox(
+                      height: Responsive.height(5, context),
+                    ),
+                    Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children:[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(CupertinoIcons.mail,color: Colors.white,),
+                          ),
+                          Container(
+                            width: Responsive.width(80, context),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    borderSide: BorderSide(color: Colors.white, width: 2.0)
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    borderSide: BorderSide(color: Colors.white, width: 2.0)
+                                  ),
+                                  hintText: "Project Name",
+                                  hintStyle: TextStyle(color: Colors.white)
+                              ),
+                              keyboardType: TextInputType.text,
+                              textAlign: TextAlign.left,
+                              controller: ProjNameController,
+                            ),
+                          ),
+                        ]
+                    ),
                   SizedBox(
                     height: Responsive.height(5, context),
                   ),
                   Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children:[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(CupertinoIcons.person,color: Colors.white,),
+                        ),
+                        Container(
+                          width: Responsive.width(80, context),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    borderSide: BorderSide(color: Colors.white, width: 2.0)
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    borderSide: BorderSide(color: Colors.white, width: 2.0)
+                                ),
+                                hintText: "Your Name",
+                                hintStyle: TextStyle(color: Colors.white)
+                            ),
+                            keyboardType: TextInputType.text,
+                            textAlign: TextAlign.left,
+                            controller: YourNameController,
+                          ),
+                        ),
+                      ]
+                  ),
+                  SizedBox(
+                    height: Responsive.height(5, context),
+                  ),
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children:[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(CupertinoIcons.mail,color: Colors.white,),
+                        ),
+                        Container(
+                          width: Responsive.width(75, context),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    borderSide: BorderSide(color: Colors.white, width: 2.0)
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    borderSide: BorderSide(color: Colors.white, width: 2.0)
+                                ),
+                                hintText: "Enter upto 5 keywords",
+                                hintStyle: TextStyle(color: Colors.white)
+                            ),
+                            keyboardType: TextInputType.text,
+                            textAlign: TextAlign.left,
+                            controller: KeywordsController,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0,right: 8),
+                          child: SizedBox(height: Responsive.height(10, context),width: Responsive.width(10, context),child: ElevatedButton(onPressed: (){Keywords.add(KeywordsController.text.toString());KeywordsController.clear();} , child: Icon(Icons.add),style: ElevatedButton.styleFrom(shape: CircleBorder(),padding: EdgeInsets.all(2)),)),
+                        ),
+                      ]
+                  ),
+                  Container(
+                    height: Responsive.height(5, context),
+                    child: Row(
+                      children: [for(String i in Keywords)Text(i.toString(),style: TextStyle(color: Colors.white),)],
+
+                    ),
+                  ),
+
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children:[
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -59,144 +169,46 @@ class AddProject extends StatelessWidget {
                             decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50.0),
-                                  borderSide: BorderSide(color: Colors.white, width: 2.0)
+                                    borderSide: BorderSide(color: Colors.white, width: 2.0)
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  borderSide: BorderSide(color: Colors.white, width: 2.0)
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    borderSide: BorderSide(color: Colors.white, width: 2.0)
                                 ),
-                                hintText: "Project Name",
+                                hintText: "Description",
                                 hintStyle: TextStyle(color: Colors.white)
                             ),
                             keyboardType: TextInputType.text,
                             textAlign: TextAlign.left,
-                            controller: ProjNameController,
+                            controller: DescriptionController,
                           ),
                         ),
                       ]
                   ),
-                SizedBox(
-                  height: Responsive.height(5, context),
-                ),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  SizedBox(
+                    height: Responsive.height(5, context),
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children:[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(CupertinoIcons.mail,color: Colors.white,),
-                      ),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Container(
-                        width: Responsive.width(80, context),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  borderSide: BorderSide(color: Colors.white, width: 2.0)
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  borderSide: BorderSide(color: Colors.white, width: 2.0)
-                              ),
-                              hintText: "Your Name",
-                              hintStyle: TextStyle(color: Colors.white)
+                        width: Responsive.width(50, context),
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color.fromRGBO(29, 53, 87, 1))),
+                          child: Text(
+                            'Next',
+                            style: TextStyle(fontSize: 20,),
                           ),
-                          keyboardType: TextInputType.text,
-                          textAlign: TextAlign.left,
-                          controller: YourNameController,
+                          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => AddImage()),);},
                         ),
                       ),
-                    ]
-                ),
-                SizedBox(
-                  height: Responsive.height(5, context),
-                ),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children:[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(CupertinoIcons.mail,color: Colors.white,),
-                      ),
-                      Container(
-                        width: Responsive.width(80, context),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  borderSide: BorderSide(color: Colors.white, width: 2.0)
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  borderSide: BorderSide(color: Colors.white, width: 2.0)
-                              ),
-                              hintText: "Enter upto 5 keywords",
-                              hintStyle: TextStyle(color: Colors.white)
-                          ),
-                          keyboardType: TextInputType.text,
-                          textAlign: TextAlign.left,
-                          controller: KeywordsController,
-                        ),
-                      ),
-                    ]
-                ),
-                SizedBox(
-                  height: Responsive.height(5, context),
-                ),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children:[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(CupertinoIcons.mail,color: Colors.white,),
-                      ),
-                      Container(
-                        width: Responsive.width(80, context),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  borderSide: BorderSide(color: Colors.white, width: 2.0)
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  borderSide: BorderSide(color: Colors.white, width: 2.0)
-                              ),
-                              hintText: "Description",
-                              hintStyle: TextStyle(color: Colors.white)
-                          ),
-                          keyboardType: TextInputType.text,
-                          textAlign: TextAlign.left,
-                          controller: DescriptionController,
-                        ),
-                      ),
-                    ]
-                ),
-                SizedBox(
-                  height: Responsive.height(5, context),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: Responsive.width(50, context),
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color.fromRGBO(29, 53, 87, 1))),
-                        child: Text(
-                          'Submit',
-                          style: TextStyle(fontSize: 20,),
-                        ),
-                        onPressed: ()async {},
-                      ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
 
-              ],
+                ],
+              ),
             )
         ),
       ),
