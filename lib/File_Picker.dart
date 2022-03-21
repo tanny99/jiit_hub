@@ -18,6 +18,7 @@ class FilePickerDemo extends StatefulWidget {
 
 class _FilePickerDemoState extends State<FilePickerDemo> {
   CollectionReference users = FirebaseFirestore.instance.collection('Projects');
+
   Future<void> addUser() {
     // Call the user's CollectionReference to add a new user
     return users
@@ -78,6 +79,7 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
       _paths != null ? _paths!.map((e) => e.name).toString() : '...';
       _userAborted = _paths == null;
     });
+    print(_fileName);
     addUser();
   }
 
