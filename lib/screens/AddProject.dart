@@ -4,6 +4,7 @@ import 'package:jiit_hub/responsive_constants.dart';
 import '../Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
 import 'add_image.dart';
+import 'package:jiit_hub/File_Picker.dart';
 
 final TextEditingController ProjNameController = TextEditingController();
 final TextEditingController YourNameController = TextEditingController();
@@ -201,7 +202,7 @@ class AddProject extends StatelessWidget {
                             'Next',
                             style: TextStyle(fontSize: 20,),
                           ),
-                          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => AddImage()),);},
+                          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => FilePickerDemo(project_name: ProjNameController.text.toString(),your_name: YourNameController.text.toString(),description: DescriptionController.text.toString(),keywords: Keywords,)),);},
                         ),
                       ),
                     ],
