@@ -9,8 +9,27 @@ import 'CSE_ITProject.dart';
 // import 'HomePage.dart';
 import 'MyWork.dart';
 import 'ECE.dart';
-class CSEMainPage extends StatelessWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+class CSEMainPage extends StatefulWidget {
   @override
+  State<CSEMainPage> createState() => _CSEMainPageState();
+}
+late String download_URL;
+class _CSEMainPageState extends State<CSEMainPage> {
+  @override
+  Future<void> downloadURLExample() async {
+    download_URL = await firebase_storage.FirebaseStorage.instance
+        .ref('Projects/File_URL')
+        .getDownloadURL();
+
+    // Within your widgets:
+
+  }
+  void initState() {
+    super.initState();
+    downloadURLExample();
+  }
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -35,7 +54,7 @@ class CSEMainPage extends StatelessWidget {
                   child: SizedBox(height: 70,width:250,
                     child: TextButton(
                       onPressed:(){
-                        Navigator.push(context,MaterialPageRoute(builder: (context) => CSE_ITProject()),);
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => CSE_ITProject(downloadURL: download_URL,)),);
                       },
                       child: Text(
                         'CSE & IT Projects',

@@ -3,8 +3,24 @@ import 'package:jiit_hub/screens/AddProject.dart';
 import 'package:jiit_hub/screens/CSEMainPage.dart';
 import 'package:jiit_hub/File_Picker.dart';
 
-class CSE_ITProject extends StatelessWidget {
+class CSE_ITProject extends StatefulWidget {
+  final String downloadURL;
+  CSE_ITProject({required this.downloadURL});
   @override
+
+
+  State<CSE_ITProject> createState() => _CSE_ITProjectState();
+
+}
+
+class _CSE_ITProjectState extends State<CSE_ITProject> {
+  @override
+
+
+
+
+
+
   Widget build(BuildContext context) {
     return MaterialApp (
       debugShowCheckedModeBanner: false,
@@ -43,9 +59,7 @@ class CSE_ITProject extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-
-                ),
+                Image.network(widget.downloadURL)
 
               ],
             )

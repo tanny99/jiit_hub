@@ -1,12 +1,17 @@
-// import 'dart:html';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class FilePickerDemo extends StatefulWidget {
   final String project_name,description,your_name;
@@ -18,7 +23,17 @@ class FilePickerDemo extends StatefulWidget {
 
 class _FilePickerDemoState extends State<FilePickerDemo> {
   CollectionReference users = FirebaseFirestore.instance.collection('Projects');
+  Future<void> uploadFile(String filePath) async {
+    File file = File(filePath);
 
+    try {
+      await firebase_storage.FirebaseStorage.instance
+          .ref('Projects/File_URL')
+          .putFile(file);
+    } on firebase_core.FirebaseException catch (e) {
+      // e.g, e.code == 'canceled'
+    }
+  }
   Future<void> addUser() {
     // Call the user's CollectionReference to add a new user
     return users
@@ -27,8 +42,8 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
       'Your_Name': widget.your_name, // Stokes and Sons
       'Keywords': widget.keywords,
       'Description': widget.description,
-      'PDF_URL': widget.your_name,
-      'File_URL': _directoryPath,
+      // 'PDF_URL': widget.your_name,
+      // 'File_URL': _directoryPath,
     })
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
@@ -58,15 +73,18 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
     _resetState();
     try {
       _directoryPath = null;
-      _paths = (await FilePicker.platform.pickFiles(
-        type: _pickingType,
-        allowMultiple: _multiPick,
-        onFileLoading: (FilePickerStatus status) => print(status),
-        allowedExtensions: (_extension?.isNotEmpty ?? false)
-            ? _extension?.replaceAll(' ', '').split(',')
-            : null,
-      ))
-          ?.files;
+        FilePickerResult? result = await FilePicker.platform.pickFiles();
+      File file = File(result!.files.single.path!);
+      // print('checking...'+result);
+      try {
+        await firebase_storage.FirebaseStorage.instance
+            .ref('Projects/File_URL')
+            .putFile(file);
+      } on firebase_core.FirebaseException catch (e) {
+        // e.g, e.code == 'canceled'
+        print('@@@@');
+        print(e);
+      }
     } on PlatformException catch (e) {
       _logException('Unsupported operation' + e.toString());
     } catch (e) {
@@ -79,7 +97,8 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
       _paths != null ? _paths!.map((e) => e.name).toString() : '...';
       _userAborted = _paths == null;
     });
-    print(_fileName);
+
+
     addUser();
   }
 

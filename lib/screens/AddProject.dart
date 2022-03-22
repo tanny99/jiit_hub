@@ -4,6 +4,7 @@ import 'package:jiit_hub/responsive_constants.dart';
 import '../Constants.dart' as K;
 import 'package:flutter/cupertino.dart';
 import 'add_image.dart';
+import 'CSEMainPage.dart';
 import 'package:jiit_hub/File_Picker.dart';
 
 final TextEditingController ProjNameController = TextEditingController();
@@ -27,7 +28,7 @@ class AddProject extends StatelessWidget {
                 return IconButton(
                   icon: const Icon(Icons.arrow_back_outlined),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context){return CSE_ITProject();}));
+                    Navigator.push(context, MaterialPageRoute(builder: (context){return CSEMainPage();}));
                   },
                 );
               },
