@@ -60,6 +60,7 @@ class AddProject extends StatelessWidget {
                           Container(
                             width: Responsive.width(80, context),
                             child: TextField(
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(50.0),
@@ -93,7 +94,9 @@ class AddProject extends StatelessWidget {
                         Container(
                           width: Responsive.width(80, context),
                           child: TextField(
+                            style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
+
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50.0),
                                     borderSide: BorderSide(color: Colors.white, width: 2.0)
@@ -126,6 +129,7 @@ class AddProject extends StatelessWidget {
                         Container(
                           width: Responsive.width(75, context),
                           child: TextField(
+                            style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50.0),
@@ -150,13 +154,35 @@ class AddProject extends StatelessWidget {
                       ]
                   ),
                   Container(
+                    margin: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(3.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.blueAccent),
+                      borderRadius: new BorderRadius.circular(20)
+                    ),
                     height: Responsive.height(5, context),
-                    child: Row(
-                      children: [for(String i in Keywords)Text(i.toString(),style: TextStyle(color: Colors.white),)],
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 50.0),
+                      child: Row(
+                        children: [
+                          for(String i in Keywords)
+                            Padding(
+                              padding: const EdgeInsets.only(right: 40.0),
+                              child: Text(i.toString(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
 
+                            )
+                        ],
+                      ),
                     ),
                   ),
-
+                  SizedBox(
+                    height: Responsive.height(3, context),
+                  ),
                   Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -168,6 +194,7 @@ class AddProject extends StatelessWidget {
                         Container(
                           width: Responsive.width(80, context),
                           child: TextField(
+                            style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50.0),

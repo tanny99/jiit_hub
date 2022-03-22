@@ -16,15 +16,16 @@ class CSEMainPage extends StatefulWidget {
   State<CSEMainPage> createState() => _CSEMainPageState();
 }
 late String download_URL;
+// bool isLoading = false;
 class _CSEMainPageState extends State<CSEMainPage> {
   @override
   Future<void> downloadURLExample() async {
     download_URL = await firebase_storage.FirebaseStorage.instance
         .ref('Projects/File_URL')
         .getDownloadURL();
-
-    // Within your widgets:
-
+    // setState(() {
+    //   isLoading = true;
+    // });
   }
   void initState() {
     super.initState();

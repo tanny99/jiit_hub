@@ -56,10 +56,25 @@ class _CSE_ITProjectState extends State<CSE_ITProject> {
               ),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(widget.downloadURL)
+                Container(
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white)
+
+                  ),
+                  // child: Padding(
+                    // padding: const EdgeInsets.only(top: 15.0),
+                    child: Image.network(widget.downloadURL,
+                      width: 200,
+                      height: 200,
+                      // fit: BoxFit.cover,
+                    ),
+                  // ),
+                )
 
               ],
             )
