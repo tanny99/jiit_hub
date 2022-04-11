@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:jiit_hub/screens/CSEMainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -34,7 +35,7 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
       // e.g, e.code == 'canceled'
     }
   }
-  Future<void> addUser() {
+  Future<void> addUser(String ss) {
     // Call the user's CollectionReference to add a new user
     return users
         .add({
@@ -43,7 +44,7 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
       'Keywords': widget.keywords,
       'Description': widget.description,
       // 'PDF_URL': widget.your_name,
-      // 'File_URL': _directoryPath,
+      'File_URL': ss,
     })
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
@@ -69,17 +70,28 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
     _controller.addListener(() => _extension = _controller.text);
   }
 
-  void _pickFiles() async {
+  Future<void> _pickFiles() async {
     _resetState();
     try {
       _directoryPath = null;
         FilePickerResult? result = await FilePicker.platform.pickFiles();
       File file = File(result!.files.single.path!);
-      // print('checking...'+result);
+      print('checking...');
+      print(file);
       try {
-        await firebase_storage.FirebaseStorage.instance
-            .ref('Projects/File_URL')
-            .putFile(file);
+        Reference  x=await firebase_storage.FirebaseStorage.instance
+            .ref('Projects/${widget.your_name}/${widget.project_name}');
+        UploadTask xx=x.putFile(file);
+        var xxx;
+         xx.then((res) async{
+           xxx =await res.ref.getDownloadURL();
+           print(res);
+           addUser( xxx.toString());
+        });
+
+
+
+
       } on firebase_core.FirebaseException catch (e) {
         // e.g, e.code == 'canceled'
         print('@@@@');
@@ -99,7 +111,8 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
     });
 
 
-    addUser();
+
+
   }
 
   void _clearCachedFiles() async {

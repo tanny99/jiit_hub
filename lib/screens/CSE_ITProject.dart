@@ -4,8 +4,11 @@ import 'package:jiit_hub/screens/CSEMainPage.dart';
 import 'package:jiit_hub/File_Picker.dart';
 
 class CSE_ITProject extends StatefulWidget {
-  final String downloadURL;
-  CSE_ITProject({required this.downloadURL});
+  // final String downloadURL;
+  CSE_ITProject(
+    //   {
+    // required this.downloadURL}
+    );
   @override
 
 
@@ -68,11 +71,13 @@ class _CSE_ITProjectState extends State<CSE_ITProject> {
                   ),
                   // child: Padding(
                     // padding: const EdgeInsets.only(top: 15.0),
-                    child: Image.network(widget.downloadURL,
-                      width: 200,
-                      height: 200,
-                      // fit: BoxFit.cover,
-                    ),
+                    child: Text('data'),
+                    // Image.network(
+                    //   widget.downloadURL,
+                    //   width: 200,
+                    //   height: 200,
+                    //   // fit: BoxFit.cover,
+                    // ),
                   // ),
                 )
 

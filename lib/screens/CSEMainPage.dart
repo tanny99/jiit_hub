@@ -55,7 +55,9 @@ class _CSEMainPageState extends State<CSEMainPage> {
                   child: SizedBox(height: 70,width:250,
                     child: TextButton(
                       onPressed:(){
-                        Navigator.push(context,MaterialPageRoute(builder: (context) => CSE_ITProject(downloadURL: download_URL,)),);
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => CSE_ITProject(
+                          // downloadURL: download_URL,
+                        )),);
                       },
                       child: Text(
                         'CSE & IT Projects',
