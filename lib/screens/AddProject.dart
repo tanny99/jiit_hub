@@ -14,6 +14,7 @@ final TextEditingController DescriptionController = TextEditingController();
 List<String>Keywords=[];
 class AddProject extends StatelessWidget {
   @override
+
   Widget build(BuildContext context) {
     return MaterialApp (
       debugShowCheckedModeBanner: false,
@@ -230,7 +231,19 @@ class AddProject extends StatelessWidget {
                             'Next',
                             style: TextStyle(fontSize: 20,),
                           ),
-                          onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => FilePickerDemo(project_name: ProjNameController.text.toString(),your_name: YourNameController.text.toString(),description: DescriptionController.text.toString(),keywords: Keywords,)),);},
+                          onPressed: () {
+
+                            String a=ProjNameController.text.toString();
+                            String b=YourNameController.text.toString();
+                            String c=DescriptionController.text.toString();
+                            List<String> d = List.from(Keywords);
+                            print(d);
+                            ProjNameController.clear();
+                            YourNameController.clear();
+                            DescriptionController.clear();
+                            Keywords.clear();
+                            print(d);
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => FilePickerDemo(project_name: a,your_name: b,description: c,keywords: d,)),);},
                         ),
                       ),
                     ],
