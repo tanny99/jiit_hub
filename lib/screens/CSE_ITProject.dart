@@ -4,26 +4,43 @@ import 'package:jiit_hub/screens/CSEMainPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jiit_hub/File_Picker.dart';
+import 'ProjectDetails.dart';
 FirebaseFirestore _firestore = FirebaseFirestore.instance;
+final search_controller = TextEditingController();
+String controllerText = '';
 class CSE_ITProject extends StatefulWidget {
   // final String downloadURL;
   CSE_ITProject(
     //   {
     // required this.downloadURL}
     );
+
   @override
 
+  _CSE_ITProjectState createState() => _CSE_ITProjectState();
 
-  State<CSE_ITProject> createState() => _CSE_ITProjectState();
+
+  // }
+  //
+  // State<CSE_ITProject> createState() => _CSE_ITProjectState();
 
 }
 
 class _CSE_ITProjectState extends State<CSE_ITProject> {
-  @override
 
+  @override
+  textListener() {
+    print("Current Text is ${search_controller.text}");
+  }
   final _auth = FirebaseAuth.instance;
 
+  void initState() {
+    super.initState();
+    search_controller.addListener(textListener);
+    setState(() {
 
+    });
+  }
 
 
   Widget build(BuildContext context) {
@@ -38,7 +55,7 @@ class _CSE_ITProjectState extends State<CSE_ITProject> {
           leading: Builder(
             builder: (BuildContext context) {
               return IconButton(
-                icon: const Icon(Icons.arrow_back_outlined),
+                icon: const Icon(Icons.next_plan),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context){return CSEMainPage();}));
                 },
@@ -73,7 +90,7 @@ class _CSE_ITProjectState extends State<CSE_ITProject> {
                   ),
                   // child: Padding(
                     // padding: const EdgeInsets.only(top: 15.0),
-                    child: Text('data'),
+                    child: TextField(controller: search_controller,),
                     // Image.network(
                     //   widget.downloadURL,
                     //   width: 200,
@@ -82,7 +99,7 @@ class _CSE_ITProjectState extends State<CSE_ITProject> {
                     // ),
                   // ),
                 ),
-                StreambuilderClass()
+                StreambuilderClass(Sdata: search_controller.text.toString(),)
 
               ],
             )
@@ -93,6 +110,8 @@ class _CSE_ITProjectState extends State<CSE_ITProject> {
 }
 
 class StreambuilderClass extends StatelessWidget {
+  final Sdata;
+  StreambuilderClass({@required this.Sdata});
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -124,11 +143,17 @@ class StreambuilderClass extends StatelessWidget {
               Your_Name: Your_Name,
               Project_Name: Project_Name,
             );
-            // for( String i in Keywords){
-            //   if(i=='c++'){
+            for( String i in Keywords){
+              if(Sdata==null||Sdata==''){
                 messageBubbles.add(messageBubble);
-            //   }
-            // }
+              }
+              else{
+                if(i.toLowerCase()==Sdata.toLowerCase()){
+                  messageBubbles.add(messageBubble);
+                }
+              }
+
+            }
 
 
 
@@ -172,10 +197,12 @@ class MessageBubble extends StatelessWidget {
             elevation: 6,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              child: Text(
-                Your_Name,
-                style: TextStyle(
-                    fontSize: 15, color:Colors.blue ),
+              child: TextButton(onPressed: () {   Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  ProjectDetails(Description: Description,Keywords: Keywords,File_URL: File_URL,Project_Name: Project_Name,Your_Name: Your_Name
+                  ,)),
+              );},
+              child: Text(Project_Name,style: TextStyle(fontSize: 15, color:Colors.blue ),),
               ),
             ),
           ),
