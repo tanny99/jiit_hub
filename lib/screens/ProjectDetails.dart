@@ -53,7 +53,7 @@ class ProjectDetails extends StatelessWidget {
                     children: <Widget>[
                       CircleAvatar(
                         backgroundImage: NetworkImage(
-                          "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg",
+                          "https://c8.alamy.com/comp/2GRRPP1/dj-avatar-male-musician-character-mixing-and-music-profile-user-person-people-icon-vector-illustration-2GRRPP1.jpg",
                         ),
                         radius: 50.0,
                       ),
