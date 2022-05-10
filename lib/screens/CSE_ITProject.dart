@@ -38,7 +38,7 @@ class _CSE_ITProjectState extends State<CSE_ITProject> {
     super.initState();
     search_controller.addListener(textListener);
     setState(() {
-
+      
     });
   }
 
@@ -128,6 +128,7 @@ class StreambuilderClass extends StatelessWidget {
           }
           final messages = snapshot.data!.docs.reversed;
           List<MessageBubble> messageBubbles = [];
+          Map map=Map<MessageBubble,int>();
           for (var message in messages) {
             final Description = message['Description'];
             final File_URL = message['File_URL'];
@@ -143,17 +144,47 @@ class StreambuilderClass extends StatelessWidget {
               Your_Name: Your_Name,
               Project_Name: Project_Name,
             );
-            for( String i in Keywords){
-              if(Sdata==null||Sdata==''){
-                messageBubbles.add(messageBubble);
-              }
-              else{
+            // if(Sdata==null||Sdata==''){
+            //   messageBubbles.add(messageBubble);
+            // }
+
+
+
+
+              for( String i in Keywords){
                 if(i.toLowerCase()==Sdata.toLowerCase()){
-                  messageBubbles.add(messageBubble);
+                  if(map[messageBubble]==null){
+                    map[messageBubble]=0;
+                  }
+                  else{
+                    map[messageBubble]++;
+                  }
+                }
+              }
+              var des= Description.split(" ");
+              for( String i in des){
+                if(i.toLowerCase()==Sdata.toLowerCase()){
+                  if(map[messageBubble]==null){
+                    map[messageBubble]=0;
+                  }
+                  else{
+                    map[messageBubble]++;
+                  }
                 }
               }
 
-            }
+              //sorting  map<key,value> accn to value
+              var sortedKeys = map.keys.toList(growable:false)
+                ..sort((k1, k2) => map[k1].compareTo(map[k2]));
+              Map sortedMap = Map<MessageBubble,int>
+                  .fromIterable(sortedKeys, key: (k) => k, value: (k) => map[k]);
+              sortedMap.forEach((k,v) => messageBubbles.add(k));
+
+
+
+
+
+
 
 
 
