@@ -157,18 +157,23 @@ class StreambuilderClass extends StatelessWidget {
                     map[messageBubble]=0;
                   }
                   else{
-                    map[messageBubble]++;
+                    print('##');
+                    map[messageBubble]+=1;
                   }
+                  print(map.length);
                 }
               }
               var des= Description.split(" ");
+
               for( String i in des){
+                print(i);
                 if(i.toLowerCase()==Sdata.toLowerCase()){
                   if(map[messageBubble]==null){
                     map[messageBubble]=0;
                   }
                   else{
-                    map[messageBubble]++;
+                    print('@@');
+                    map[messageBubble]+=1;
                   }
                 }
               }
