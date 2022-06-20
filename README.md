@@ -20,3 +20,4 @@ samples, guidance on mobile development, and a full API reference.
 // hub info & acadmic
 // faculty panel
 
+![tanny](https://github.com/tanny99/jiit_hub/UI_Preview/master/WhatsApp Image 2022-06-21 at 12.19.53 AM.jpeg?raw=true)
