@@ -51,8 +51,10 @@ samples, guidance on mobile development, and a full API reference.
 
 <img src="https://github.com/tanny99/jiit_hub/blob/master/UI_Preview/WhatsApp%20Image%202022-06-21%20at%2012.19.49%20AM%20(1).jpeg?raw=true" width="200" height="400" />
 
-<img src="https://github.com/tanny99/jiit_hub/blob/master/UI_Preview/WhatsApp%20Image%202022-06-21%20at%2012.19.48%20AM.jpeg?raw=true" width="200" height="400" />
+
 
 <img src="https://github.com/tanny99/jiit_hub/blob/master/UI_Preview/WhatsApp%20Image%202022-06-21%20at%2012.19.48%20AM%20(1).jpeg?raw=true" width="200" height="400" />
 
 <img src="https://github.com/tanny99/jiit_hub/blob/master/UI_Preview/WhatsApp%20Image%202022-06-21%20at%2012.19.50%20AM%20(1).jpeg?raw=true" width="200" height="400" />
+
+<img src="https://github.com/tanny99/jiit_hub/blob/master/UI_Preview/WhatsApp%20Image%202022-06-21%20at%2012.19.48%20AM.jpeg?raw=true" width="200" height="400" />
