@@ -1,10 +1,7 @@
 # Welcome to JIIT HUB!
 
-A multi-functional app for the JIIT Community.
+<b>A multi-functional app for the JIIT Community.</b>
 <br>
-// Static info
-// hub info & acadmic
-// faculty panel
 <p>1. Welcome Screen</p>
 <img src="https://github.com/tanny99/jiit_hub/blob/master/UI_Preview/WhatsApp%20Image%202022-06-21%20at%2012.19.53%20AM.jpeg?raw=true" width="200" height="400" />
 
