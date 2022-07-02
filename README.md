@@ -2,6 +2,9 @@
 
 <b>A multi-functional app for the JIIT Community.</b>
 <br>
+
+<b>A combination of Google Classroom/Github(like Assignments/Projects), Whatsapp(like Chatting), Twitter/Instagram(like Posts).  </b>
+<br>
 <p>1. Welcome Screen</p>
 <img src="https://github.com/tanny99/jiit_hub/blob/master/UI_Preview/WhatsApp%20Image%202022-06-21%20at%2012.19.53%20AM.jpeg?raw=true" width="200" height="400" />
 
